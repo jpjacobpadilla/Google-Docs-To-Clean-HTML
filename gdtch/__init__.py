@@ -32,13 +32,14 @@ class Cleaner(
 
         with open(f'{file_path}/cleaned_html.html', mode='w', encoding='utf-8') as file:
             for item in self.root.iterfind('./body/*'):
-                if re.match(r'h[1-6]$', item.tag):
+                if re.match(r'h[1-6]$', item.tag): 
                     indent = int(item.tag[-1]) - 1
-                if item.getnext() is not None and re.match(r'h[1-6]$', item.tag): 
+
                     file.write('\n')
                     file.write(' ' * 4 * indent + html.tostring(item, method='html', encoding='utf-8').decode('utf-8') + '\n')
                     file.write('\n')
+
+                    indent = int(item.tag[-1]) 
+
                 else:
                     file.write(' ' * 4 * indent + html.tostring(item, method='html', encoding='utf-8').decode('utf-8') + '\n')
-                if re.match(r'h[1-6]$', item.tag):
-                    indent = int(item.tag[-1]) 
