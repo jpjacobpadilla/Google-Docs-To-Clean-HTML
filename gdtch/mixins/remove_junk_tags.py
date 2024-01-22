@@ -3,8 +3,14 @@ import html as phtml
 from lxml import html
 import re
 
-class RemoveExtraTags:
+class RemoveJunkTags:
     def clean_p_tags(self):
+        # remove junk tags and white space at end but also add
+            # 1. strong
+            # 2. underline
+            # 3. italics
+            # 4. strikethrough
+
         # Function to recursively remove all tags except <p> and <a>
         def clean_html(element):
             if element.tag not in ['p', 'a']:

@@ -4,16 +4,24 @@ from typing import TYPE_CHECKING
 from lxml import html
 import re
 
-from gdtch.mixins.remove_extra_tags import RemoveExtraTags
+from gdtch.mixins.remove_junk_tags import RemoveJunkTags
 from gdtch.mixins.remove_top_of_document import RemoveTopOfDocument
+from gdtch.mixins.clean_attributes import CleanAttributes
+from gdtch.mixins.alter_text import AlterText
+from gdtch.mixins.multiline_transform import MultiLineTransform
+from gdtch.mixins.add_elements import AddElements
 
 if TYPE_CHECKING:
     from lxml.html import HtmlElement
 
 
 class Cleaner(
-    RemoveExtraTags,
-    RemoveTopOfDocument
+    RemoveJunkTags,
+    RemoveTopOfDocument,
+    CleanAttributes,
+    AlterText,
+    MultiLineTransform,
+    AddElements
 ):
 
     def __init__(self, file_path: str):
