@@ -4,12 +4,17 @@ from typing import TYPE_CHECKING
 from lxml import html
 
 from gdtch.mixins.remove_extra_tags import RemoveExtraTags
+from gdtch.mixins.remove_top_of_document import RemoveTopOfDocument
 
 if TYPE_CHECKING:
     from lxml.html import HtmlElement
 
 
-class Cleaner:
+class Cleaner(
+    RemoveExtraTags,
+    RemoveTopOfDocument
+):
+
     def __init__(self, file_path: str):
         self.root = self.create_tree(file_path)
 
