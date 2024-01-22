@@ -1,0 +1,124 @@
+<html>
+<head><meta content="text/html; charset=UTF-8" http-equiv="content-type"></head>
+<body class="c18 doc-content">
+<p class="c21"><span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 397.72px; height: 209.50px;"><img alt="" src="images/image1.png" style="width: 397.72px; height: 209.50px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""></span></p>
+<p class="c2"><span class="c7">Title: </span><span class="c7 c24">The Most Underused CSS Media Queries: Hover &amp; Any-Hover</span></p>
+<p class="c2 c3"><span class="c16 c12"></span></p>
+<p class="c2"><span class="c12 c16">Table of Contents:</span></p>
+<ul class="c6 lst-kix_ii3n70l8grf4-0 start">
+<li class="c2 c4 li-bullet-0"><span class="c0">What Do They Even Do?</span></li>
+<li class="c2 c4 li-bullet-0"><span class="c0">Why You Need to Start Using Them</span></li>
+</ul>
+<ul class="c6 lst-kix_ii3n70l8grf4-1 start">
+<li class="c2 c5 li-bullet-0"><span class="c0">Fix Glitchy Hovering on Touchscreens</span></li>
+<li class="c2 c5 li-bullet-0"><span class="c0">Display Content on Touchscreens</span></li>
+</ul>
+<ul class="c6 lst-kix_ii3n70l8grf4-0"><li class="c2 c4 li-bullet-0"><span class="c0">Final Thoughts</span></li></ul>
+<hr>
+<p class="c2 c3"><span class="c8"></span></p>
+<p class="c2 c3"><span class="c0"></span></p>
+<p class="c2"><span class="c12 c14">Today I want to talk about my favorite media queries in CSS, `hover` and `any-hover`, which let you detect if a user is able to hover over elements on your website. Besides the width-based media queries, to help with responsive design, the hover media queries have been by far the most useful for me. In this article I’m going to go over two extremely useful ways that I use the hover media queries, but first, let’s talk about how they actually work.</span></p>
+<h1 class="c10" id="h.fzwafgudo77"><span class="c9 c11">What Do They Even Do?</span></h1>
+<p class="c2"><span class="c0">Starting with `hover`, this media query is used to check if the primary input mechanism of a user's device can hover over elements. Generally, a computer's primary input mechanism is a mouse or trackpad, which controls a cursor on a screen; since cursors can move over elements, they are able to hover over things. However, touchscreens have a primary input of touch, which can't really hover over elements...</span></p>
+<p class="c2 c3"><span class="c0"></span></p>
+<p class="c2"><span class="c0">While `hover` is the one that I generally use, there is also `any-hover`, which looks at all of the currently available input methods and tells you if any of them can hover over things. An example where this would be useful is if a person is using an iPad with a Bluetooth mouse connected to it. Since the primary input of an iPad is touch, `hover` would fail the test, but `any-hover` would pass the test because it looks at all input methods, and a mouse, which on an iPad will appear as a tiny circle on the screen, can hover over elements.</span></p>
+<p class="c2 c3"><span class="c0"></span></p>
+<p class="c2"><span class="c0">Both `hover` and `any-hover` have two modes: `hover`, meaning that the user can hover over elements, and `none`, signaling that they can't. Here's what the syntax looks like with `hover`; for `any-hover`, swap `hover` with `any-hover`.</span></p>
+<p class="c2 c3"><span class="c0"></span></p>
+<p class="c2"><span class="c0">```css</span></p>
+<p class="c2"><span class="c0">@media (hover: hover) {</span></p>
+<p class="c2"><span class="c0">    /* The user can hover - generally with a mouse cursor */</span></p>
+<p class="c2"><span class="c0">}</span></p>
+<p class="c2 c3"><span class="c0"></span></p>
+<p class="c2"><span class="c12">@media (hover: none) {</span></p>
+<p class="c2"><span class="c0">    /* No hovering available - generally a touchscreen */</span></p>
+<p class="c2"><span class="c0">}</span></p>
+<p class="c2"><span class="c0">```</span></p>
+<h1 class="c10" id="h.jovs87kcuwoq"><span class="c9 c11">Why You Need to Start Using Them</span></h1>
+<p class="c2"><span class="c0">Now, let’s go over the main use cases for the hover media query! I’m going to use `hover` for the examples, but they will all work with `any-hover`.</span></p>
+<h2 class="c17" id="h.j4e60hm64rvh"><span class="c1">Fix Glitchy Hovering on Touchscreens</span></h2>
+<p class="c2"><span class="c0">One of the most useful ways of using `hover` is to fix glitchy, also called “sticky”, hover effects on your website. Sticky hovering is caused when there’s a hover animation on an element, but when tapping on it with a touchscreen, the `:hover` pseudo-class styling, which may make the element darker or show an underline, sticks and never goes away.</span></p>
+<p class="c2 c3"><span class="c0"></span></p>
+<p class="c2"><span class="c12">An example of this issue (that’s solved with `hover`) are my links </span><span class="c12 c13"><a class="c22" href="https://www.google.com/url?q=https://jacobpadilla.com&amp;sa=D&amp;source=editors&amp;ust=1705901303501035&amp;usg=AOvVaw3YQo3Vd0SwHRgT-wxxNG8e">which change background color when hovering over them</a></span><span class="c0">. When a user is able to hover, the text gets darker, and a background appears under the link, which helps the links be more visible and thus more accessible. </span></p>
+<p class="c2 c3"><span class="c0"></span></p>
+<p class="c2"><span class="c12">Here’s the code I wrote for the links:</span></p>
+<p class="c2 c3"><span class="c0"></span></p>
+<p class="c2"><span class="c0">Some HTML:</span></p>
+<p class="c2 c3"><span class="c0"></span></p>
+<p class="c2"><span class="c0">```html</span></p>
+<p class="c2"><span class="c0">&lt;a class="blue-link" href="a-link-here" target="_blank"&gt;Link Text&lt;/a&gt;</span></p>
+<p class="c2"><span class="c0">```</span></p>
+<p class="c2 c3"><span class="c0"></span></p>
+<p class="c2"><span class="c0">The link styling:</span></p>
+<p class="c2 c3"><span class="c0"></span></p>
+<p class="c2"><span class="c0">``css</span></p>
+<p class="c2"><span class="c0">.blue-link {</span></p>
+<p class="c2"><span class="c0">    text-decoration: none;</span></p>
+<p class="c2"><span class="c0">    cursor: pointer;</span></p>
+<p class="c2"><span class="c0">    color: var(--second-color);</span></p>
+<p class="c2 c3"><span class="c0"></span></p>
+<p class="c2"><span class="c0">    background-image: linear-gradient(var(--second-color-opaque), var(--second-color-opaque));</span></p>
+<p class="c2"><span class="c0">    background-size: 100% 0px;</span></p>
+<p class="c2"><span class="c0">    background-position: bottom;</span></p>
+<p class="c2"><span class="c0">    background-repeat: no-repeat;</span></p>
+<p class="c2"><span class="c0">    </span></p>
+<p class="c2"><span class="c0">    /* 1px padding around background */</span></p>
+<p class="c2"><span class="c0">    background-clip: border-box;</span></p>
+<p class="c2"><span class="c0">    padding: 1px;</span></p>
+<p class="c2"><span class="c0">    margin: -1px;</span></p>
+<p class="c2 c3"><span class="c0"></span></p>
+<p class="c2"><span class="c0">    transition: background-size 150ms;</span></p>
+<p class="c2"><span class="c0">}</span></p>
+<p class="c2 c3"><span class="c0"></span></p>
+<p class="c2"><span class="c0">@media (hover: hover) {</span></p>
+<p class="c2"><span class="c0">    .blue-link:hover {</span></p>
+<p class="c2"><span class="c0">        color: var(--constant-light-mode-second-color-dark);</span></p>
+<p class="c2"><span class="c0">        background-size: 100% 100%;</span></p>
+<p class="c2"><span class="c0">    }</span></p>
+<p class="c2"><span class="c0">}</span></p>
+<p class="c2"><span class="c0">```</span></p>
+<p class="c2 c3"><span class="c0"></span></p>
+<p class="c2"><span class="c0">Here's a video of the link without the `hover` media query wrapped around the `:hover` pseudo-class (I’m using Inspect Elements to mimic a touchscreen). After returning to the website with the link, you can see that the `:hover` styling sticks :(</span></p>
+<p class="c2 c3"><span class="c0"></span></p>
+<p class="c2"><span class="c9 c7">VIDEO HERE</span></p>
+<p class="c2 c3"><span class="c7 c9"></span></p>
+<p class="c2"><span class="c12">The link background sticks and doesn’t go away until tapping somewhere else on the screen.</span><span class="c0"> But, here’s what it looks like with the `hover` media query fix on a touchscreen:</span></p>
+<p class="c2 c3"><span class="c0"></span></p>
+<p class="c2"><span class="c9 c7">VIDEO HERE</span></p>
+<p class="c2 c3"><span class="c9 c7"></span></p>
+<p class="c2"><span class="c0">And you can also see that the hover effect still works as expected with a cursor:</span></p>
+<p class="c2 c3"><span class="c0"></span></p>
+<p class="c2"><span class="c7">VIDEO HERE</span></p>
+<h2 class="c17" id="h.wnipqq1fifbq"><span class="c1">Display Content on Touchscreens</span></h2>
+<p class="c2"><span class="c0">The other way that I like to use `hover` is to automatically show users extra information that would normally only be seen by hovering over an element. Let's say we have some sort of icon/tooltip that, when hovered over, displays additional information about said icon. On a touchscreen, we may want this information to always be visible since there's no hover capability. Here's how we can achieve that:</span></p>
+<p class="c2 c3"><span class="c0"></span></p>
+<p class="c2"><span class="c0">``html</span></p>
+<p class="c2"><span class="c0">&lt;div class="info-icon"&gt;An icon/button/image&lt;/div&gt;</span></p>
+<p class="c2"><span class="c0">&lt;div class="info-tooltip"&gt;Some text explaining what the icon does&lt;/div&gt; </span></p>
+<p class="c2"><span class="c0">```</span></p>
+<p class="c2 c3"><span class="c0"></span></p>
+<p class="c2"><span class="c0">```css</span></p>
+<p class="c2"><span class="c0">.info-tooltip {</span></p>
+<p class="c2"><span class="c0">    display: none;</span></p>
+<p class="c2"><span class="c12">    background-color: </span><span class="c12">lightgray</span><span class="c0">;</span></p>
+<p class="c2"><span class="c0">}</span></p>
+<p class="c2 c3"><span class="c0"></span></p>
+<p class="c2"><span class="c0">.info-icon:hover + .info-tooltip {</span></p>
+<p class="c2"><span class="c0">    display: inline-block;</span></p>
+<p class="c2"><span class="c0">}</span></p>
+<p class="c2 c3"><span class="c0"></span></p>
+<p class="c2"><span class="c0">@media (hover: none) {</span></p>
+<p class="c2"><span class="c0">    .info-tooltip {</span></p>
+<p class="c2"><span class="c0">        display: inline-block;</span></p>
+<p class="c2"><span class="c0">    }</span></p>
+<p class="c2"><span class="c0">}</span></p>
+<p class="c2"><span class="c0">```</span></p>
+<p class="c2 c3"><span class="c0"></span></p>
+<p class="c2"><span class="c0">In this snippet, the tooltip is initially set to `display: none;` and becomes visible when the user hovers over the info icon. However, it’s shown immediately if the browser (probably a phone) doesn’t support hovering. Here’s what the result looks like:</span></p>
+<p class="c2 c3"><span class="c0"></span></p>
+<p class="c2"><span class="c7">VIDEO HERE</span></p>
+<h1 class="c10" id="h.xihjmr73yfl9"><span class="c9 c11">Final Thoughts</span></h1>
+<p class="c2"><span class="c12">Both `hover` and `any-hover` are great ways to ensure that your site works on all types of devices, all while improving users’ experiences. The examples I showed are the most common ways that I use them, but there are basically an endless number of creative use cases for them. Make sure to use them next time you’re writing some responsive CSS!</span></p>
+<p class="c2 c3"><span class="c15"></span></p>
+</body>
+</html>

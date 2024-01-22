@@ -7,6 +7,7 @@ venv/
 .vscode/
 __pycache__/
 .env
+*.egg-info
 
 # Jupyter Notebooks
 *.ipynb
