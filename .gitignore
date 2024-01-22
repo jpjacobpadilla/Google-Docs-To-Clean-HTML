@@ -1,7 +1,13 @@
+# Secret stuff
 testing/
 
+# The basics
 .DS_Store
 venv/
 .vscode/
 __pycache__/
+.env
 
+# Jupyter Notebooks
+*.ipynb
+.ipynb_checkpoints/
