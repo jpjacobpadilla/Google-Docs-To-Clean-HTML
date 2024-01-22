@@ -1,81 +1,88 @@
-<html>
-<head><meta content="text/html; charset=UTF-8" http-equiv="content-type"></head>
 <body class="c18 doc-content">
 <p>&lt;p&gt;Today I want to talk about my favorite media queries in CSS, &lt;code class="inline-code"&gt;hover&lt;/code&gt; and &lt;code class="inline-code"&gt;any-hover&lt;/code&gt;, which let you detect if a user is able to hover over elements on your website. Besides the width-based media queries, to help with responsive design, the hover media queries have been by far the most useful for me. In this article I'm going to go over two extremely useful ways that I use the hover media queries, but first, let's talk about how they actually work.&lt;/p&gt;</p>
+
 <h1 class="c10" id="h.fzwafgudo77"><span class="c9 c11">What Do They Even Do?</span></h1>
-<p>&lt;p&gt;Starting with &lt;code class="inline-code"&gt;hover&lt;/code&gt;, this media query is used to check if the primary input mechanism of a user's device can hover over elements. Generally, a computer's primary input mechanism is a mouse or trackpad, which controls a cursor on a screen; since cursors can move over elements, they are able to hover over things. However, touchscreens have a primary input of touch, which can't really hover over elements...&lt;/p&gt;</p>
-<p>&lt;p&gt;While &lt;code class="inline-code"&gt;hover&lt;/code&gt; is the one that I generally use, there is also &lt;code class="inline-code"&gt;any-hover&lt;/code&gt;, which looks at all of the currently available input methods and tells you if any of them can hover over things. An example where this would be useful is if a person is using an iPad with a Bluetooth mouse connected to it. Since the primary input of an iPad is touch, &lt;code class="inline-code"&gt;hover&lt;/code&gt; would fail the test, but &lt;code class="inline-code"&gt;any-hover&lt;/code&gt; would pass the test because it looks at all input methods, and a mouse, which on an iPad will appear as a tiny circle on the screen, can hover over elements.&lt;/p&gt;</p>
-<p>&lt;p&gt;Both &lt;code class="inline-code"&gt;hover&lt;/code&gt; and &lt;code class="inline-code"&gt;any-hover&lt;/code&gt; have two modes: &lt;code class="inline-code"&gt;hover&lt;/code&gt;, meaning that the user can hover over elements, and &lt;code class="inline-code"&gt;none&lt;/code&gt;, signaling that they can't. Here's what the syntax looks like with &lt;code class="inline-code"&gt;hover&lt;/code&gt;; for &lt;code class="inline-code"&gt;any-hover&lt;/code&gt;, swap &lt;code class="inline-code"&gt;hover&lt;/code&gt; with &lt;code class="inline-code"&gt;any-hover&lt;/code&gt;.&lt;/p&gt;</p>
-<p>&lt;p&gt;&lt;code class="inline-code"&gt;&lt;/code&gt;`css&lt;/p&gt;</p>
-<p>&lt;p&gt;@media (hover: hover) {&lt;/p&gt;</p>
-<p>&lt;p&gt;    /* The user can hover - generally with a mouse cursor */&lt;/p&gt;</p>
-<p>&lt;p&gt;}&lt;/p&gt;</p>
-<p>&lt;p&gt;@media (hover: none) {&lt;/p&gt;</p>
-<p>&lt;p&gt;    /* No hovering available - generally a touchscreen */&lt;/p&gt;</p>
-<p>&lt;p&gt;}&lt;/p&gt;</p>
-<p>&lt;p&gt;&lt;code class="inline-code"&gt;&lt;/code&gt;`&lt;/p&gt;</p>
+
+    <p>&lt;p&gt;Starting with &lt;code class="inline-code"&gt;hover&lt;/code&gt;, this media query is used to check if the primary input mechanism of a user's device can hover over elements. Generally, a computer's primary input mechanism is a mouse or trackpad, which controls a cursor on a screen; since cursors can move over elements, they are able to hover over things. However, touchscreens have a primary input of touch, which can't really hover over elements...&lt;/p&gt;</p>
+     <p>&lt;p&gt;While &lt;code class="inline-code"&gt;hover&lt;/code&gt; is the one that I generally use, there is also &lt;code class="inline-code"&gt;any-hover&lt;/code&gt;, which looks at all of the currently available input methods and tells you if any of them can hover over things. An example where this would be useful is if a person is using an iPad with a Bluetooth mouse connected to it. Since the primary input of an iPad is touch, &lt;code class="inline-code"&gt;hover&lt;/code&gt; would fail the test, but &lt;code class="inline-code"&gt;any-hover&lt;/code&gt; would pass the test because it looks at all input methods, and a mouse, which on an iPad will appear as a tiny circle on the screen, can hover over elements.&lt;/p&gt;</p>
+     <p>&lt;p&gt;Both &lt;code class="inline-code"&gt;hover&lt;/code&gt; and &lt;code class="inline-code"&gt;any-hover&lt;/code&gt; have two modes: &lt;code class="inline-code"&gt;hover&lt;/code&gt;, meaning that the user can hover over elements, and &lt;code class="inline-code"&gt;none&lt;/code&gt;, signaling that they can't. Here's what the syntax looks like with &lt;code class="inline-code"&gt;hover&lt;/code&gt;; for &lt;code class="inline-code"&gt;any-hover&lt;/code&gt;, swap &lt;code class="inline-code"&gt;hover&lt;/code&gt; with &lt;code class="inline-code"&gt;any-hover&lt;/code&gt;.&lt;/p&gt;</p>
+     <p>&lt;p&gt;&lt;code class="inline-code"&gt;&lt;/code&gt;`css&lt;/p&gt;</p>
+     <p>&lt;p&gt;@media (hover: hover) {&lt;/p&gt;</p>
+     <p>&lt;p&gt;    /* The user can hover - generally with a mouse cursor */&lt;/p&gt;</p>
+     <p>&lt;p&gt;}&lt;/p&gt;</p>
+     <p>&lt;p&gt;@media (hover: none) {&lt;/p&gt;</p>
+     <p>&lt;p&gt;    /* No hovering available - generally a touchscreen */&lt;/p&gt;</p>
+     <p>&lt;p&gt;}&lt;/p&gt;</p>
+     <p>&lt;p&gt;&lt;code class="inline-code"&gt;&lt;/code&gt;`&lt;/p&gt;</p>
+
 <h1 class="c10" id="h.jovs87kcuwoq"><span class="c9 c11">Why You Need to Start Using Them</span></h1>
-<p>&lt;p&gt;Now, let's go over the main use cases for the hover media query! I'm going to use &lt;code class="inline-code"&gt;hover&lt;/code&gt; for the examples, but they will all work with &lt;code class="inline-code"&gt;any-hover&lt;/code&gt;.&lt;/p&gt;</p>
-<h2 class="c17" id="h.j4e60hm64rvh"><span class="c1">Fix Glitchy Hovering on Touchscreens</span></h2>
-<p>&lt;p&gt;One of the most useful ways of using &lt;code class="inline-code"&gt;hover&lt;/code&gt; is to fix glitchy, also called “sticky”, hover effects on your website. Sticky hovering is caused when there's a hover animation on an element, but when tapping on it with a touchscreen, the &lt;code class="inline-code"&gt;:hover&lt;/code&gt; pseudo-class styling, which may make the element darker or show an underline, sticks and never goes away.&lt;/p&gt;</p>
-<p>&lt;p&gt;An example of this issue (that's solved with &lt;code class="inline-code"&gt;hover&lt;/code&gt;) are my links &lt;a class="blue-link" href="https://jacobpadilla.com"&gt;which change background color when hovering over them&lt;/a&gt;. When a user is able to hover, the text gets darker, and a background appears under the link, which helps the links be more visible and thus more accessible.&lt;/p&gt;<a class="blue-link" href="https://jacobpadilla.com">which change background color when hovering over them</a>. When a user is able to hover, the text gets darker, and a background appears under the link, which helps the links be more visible and thus more accessible. </p>
-<p>&lt;p&gt;Here's the code I wrote for the links:&lt;/p&gt;</p>
-<p>&lt;p&gt;Some HTML:&lt;/p&gt;</p>
-<p>&lt;p&gt;&lt;code class="inline-code"&gt;&lt;/code&gt;`html&lt;/p&gt;</p>
-<p>&lt;p&gt;&amp;amp;lt;a class="blue-link" href="a-link-here" target="_blank"&amp;amp;gt;Link Text&amp;amp;lt;/a&amp;amp;gt;&lt;/p&gt;</p>
-<p>&lt;p&gt;&lt;code class="inline-code"&gt;&lt;/code&gt;`&lt;/p&gt;</p>
-<p>&lt;p&gt;The link styling:&lt;/p&gt;</p>
-<p>&lt;p&gt;&lt;code class="inline-code"&gt;&lt;/code&gt;css&lt;/p&gt;</p>
-<p>&lt;p&gt;.blue-link {&lt;/p&gt;</p>
-<p>&lt;p&gt;    text-decoration: none;&lt;/p&gt;</p>
-<p>&lt;p&gt;    cursor: pointer;&lt;/p&gt;</p>
-<p>&lt;p&gt;    color: var(--second-color);&lt;/p&gt;</p>
-<p>&lt;p&gt;    background-image: linear-gradient(var(--second-color-opaque), var(--second-color-opaque));&lt;/p&gt;</p>
-<p>&lt;p&gt;    background-size: 100% 0px;&lt;/p&gt;</p>
-<p>&lt;p&gt;    background-position: bottom;&lt;/p&gt;</p>
-<p>&lt;p&gt;    background-repeat: no-repeat;&lt;/p&gt;</p>
-<p>&lt;p&gt;    /* 1px padding around background */&lt;/p&gt;</p>
-<p>&lt;p&gt;    background-clip: border-box;&lt;/p&gt;</p>
-<p>&lt;p&gt;    padding: 1px;&lt;/p&gt;</p>
-<p>&lt;p&gt;    margin: -1px;&lt;/p&gt;</p>
-<p>&lt;p&gt;    transition: background-size 150ms;&lt;/p&gt;</p>
-<p>&lt;p&gt;}&lt;/p&gt;</p>
-<p>&lt;p&gt;@media (hover: hover) {&lt;/p&gt;</p>
-<p>&lt;p&gt;    .blue-link:hover {&lt;/p&gt;</p>
-<p>&lt;p&gt;        color: var(--constant-light-mode-second-color-dark);&lt;/p&gt;</p>
-<p>&lt;p&gt;        background-size: 100% 100%;&lt;/p&gt;</p>
-<p>&lt;p&gt;    }&lt;/p&gt;</p>
-<p>&lt;p&gt;}&lt;/p&gt;</p>
-<p>&lt;p&gt;&lt;code class="inline-code"&gt;&lt;/code&gt;`&lt;/p&gt;</p>
-<p>&lt;p&gt;Here's a video of the link without the &lt;code class="inline-code"&gt;hover&lt;/code&gt; media query wrapped around the &lt;code class="inline-code"&gt;:hover&lt;/code&gt; pseudo-class (I'm using Inspect Elements to mimic a touchscreen). After returning to the website with the link, you can see that the &lt;code class="inline-code"&gt;:hover&lt;/code&gt; styling sticks :(&lt;/p&gt;</p>
-<p>&lt;p&gt;VIDEO HERE&lt;/p&gt;</p>
-<p>&lt;p&gt;The link background sticks and doesn't go away until tapping somewhere else on the screen. But, here's what it looks like with the &lt;code class="inline-code"&gt;hover&lt;/code&gt; media query fix on a touchscreen:&lt;/p&gt;</p>
-<p>&lt;p&gt;VIDEO HERE&lt;/p&gt;</p>
-<p>&lt;p&gt;And you can also see that the hover effect still works as expected with a cursor:&lt;/p&gt;</p>
-<p>&lt;p&gt;VIDEO HERE&lt;/p&gt;</p>
-<h2 class="c17" id="h.wnipqq1fifbq"><span class="c1">Display Content on Touchscreens</span></h2>
-<p>&lt;p&gt;The other way that I like to use &lt;code class="inline-code"&gt;hover&lt;/code&gt; is to automatically show users extra information that would normally only be seen by hovering over an element. Let's say we have some sort of icon/tooltip that, when hovered over, displays additional information about said icon. On a touchscreen, we may want this information to always be visible since there's no hover capability. Here's how we can achieve that:&lt;/p&gt;</p>
-<p>&lt;p&gt;&lt;code class="inline-code"&gt;&lt;/code&gt;html&lt;/p&gt;</p>
-<p>&lt;p&gt;&amp;amp;lt;div class="info-icon"&amp;amp;gt;An icon/button/image&amp;amp;lt;/div&amp;amp;gt;&lt;/p&gt;</p>
-<p>&lt;p&gt;&amp;amp;lt;div class="info-tooltip"&amp;amp;gt;Some text explaining what the icon does&amp;amp;lt;/div&amp;amp;gt;&lt;/p&gt;</p>
-<p>&lt;p&gt;&lt;code class="inline-code"&gt;&lt;/code&gt;`&lt;/p&gt;</p>
-<p>&lt;p&gt;&lt;code class="inline-code"&gt;&lt;/code&gt;`css&lt;/p&gt;</p>
-<p>&lt;p&gt;.info-tooltip {&lt;/p&gt;</p>
-<p>&lt;p&gt;    display: none;&lt;/p&gt;</p>
-<p>&lt;p&gt;    background-color: lightgray;&lt;/p&gt;</p>
-<p>&lt;p&gt;}&lt;/p&gt;</p>
-<p>&lt;p&gt;.info-icon:hover + .info-tooltip {&lt;/p&gt;</p>
-<p>&lt;p&gt;    display: inline-block;&lt;/p&gt;</p>
-<p>&lt;p&gt;}&lt;/p&gt;</p>
-<p>&lt;p&gt;@media (hover: none) {&lt;/p&gt;</p>
-<p>&lt;p&gt;    .info-tooltip {&lt;/p&gt;</p>
-<p>&lt;p&gt;        display: inline-block;&lt;/p&gt;</p>
-<p>&lt;p&gt;    }&lt;/p&gt;</p>
-<p>&lt;p&gt;}&lt;/p&gt;</p>
-<p>&lt;p&gt;&lt;code class="inline-code"&gt;&lt;/code&gt;`&lt;/p&gt;</p>
-<p>&lt;p&gt;In this snippet, the tooltip is initially set to &lt;code class="inline-code"&gt;display: none;&lt;/code&gt; and becomes visible when the user hovers over the info icon. However, it's shown immediately if the browser (probably a phone) doesn't support hovering. Here's what the result looks like:&lt;/p&gt;</p>
-<p>&lt;p&gt;VIDEO HERE&lt;/p&gt;</p>
+
+    <p>&lt;p&gt;Now, let's go over the main use cases for the hover media query! I'm going to use &lt;code class="inline-code"&gt;hover&lt;/code&gt; for the examples, but they will all work with &lt;code class="inline-code"&gt;any-hover&lt;/code&gt;.&lt;/p&gt;</p>
+
+    <h2 class="c17" id="h.j4e60hm64rvh"><span class="c1">Fix Glitchy Hovering on Touchscreens</span></h2>
+
+        <p>&lt;p&gt;One of the most useful ways of using &lt;code class="inline-code"&gt;hover&lt;/code&gt; is to fix glitchy, also called “sticky”, hover effects on your website. Sticky hovering is caused when there's a hover animation on an element, but when tapping on it with a touchscreen, the &lt;code class="inline-code"&gt;:hover&lt;/code&gt; pseudo-class styling, which may make the element darker or show an underline, sticks and never goes away.&lt;/p&gt;</p>
+         <p>&lt;p&gt;An example of this issue (that's solved with &lt;code class="inline-code"&gt;hover&lt;/code&gt;) are my links &lt;a class="blue-link" href="https://jacobpadilla.com"&gt;which change background color when hovering over them&lt;/a&gt;. When a user is able to hover, the text gets darker, and a background appears under the link, which helps the links be more visible and thus more accessible.&lt;/p&gt;<a class="blue-link" href="https://jacobpadilla.com">which change background color when hovering over them</a>. When a user is able to hover, the text gets darker, and a background appears under the link, which helps the links be more visible and thus more accessible. </p>
+         <p>&lt;p&gt;Here's the code I wrote for the links:&lt;/p&gt;</p>
+         <p>&lt;p&gt;Some HTML:&lt;/p&gt;</p>
+         <p>&lt;p&gt;&lt;code class="inline-code"&gt;&lt;/code&gt;`html&lt;/p&gt;</p>
+         <p>&lt;p&gt;&amp;amp;lt;a class="blue-link" href="a-link-here" target="_blank"&amp;amp;gt;Link Text&amp;amp;lt;/a&amp;amp;gt;&lt;/p&gt;</p>
+         <p>&lt;p&gt;&lt;code class="inline-code"&gt;&lt;/code&gt;`&lt;/p&gt;</p>
+         <p>&lt;p&gt;The link styling:&lt;/p&gt;</p>
+         <p>&lt;p&gt;&lt;code class="inline-code"&gt;&lt;/code&gt;css&lt;/p&gt;</p>
+         <p>&lt;p&gt;.blue-link {&lt;/p&gt;</p>
+         <p>&lt;p&gt;    text-decoration: none;&lt;/p&gt;</p>
+         <p>&lt;p&gt;    cursor: pointer;&lt;/p&gt;</p>
+         <p>&lt;p&gt;    color: var(--second-color);&lt;/p&gt;</p>
+         <p>&lt;p&gt;    background-image: linear-gradient(var(--second-color-opaque), var(--second-color-opaque));&lt;/p&gt;</p>
+         <p>&lt;p&gt;    background-size: 100% 0px;&lt;/p&gt;</p>
+         <p>&lt;p&gt;    background-position: bottom;&lt;/p&gt;</p>
+         <p>&lt;p&gt;    background-repeat: no-repeat;&lt;/p&gt;</p>
+         <p>&lt;p&gt;    /* 1px padding around background */&lt;/p&gt;</p>
+         <p>&lt;p&gt;    background-clip: border-box;&lt;/p&gt;</p>
+         <p>&lt;p&gt;    padding: 1px;&lt;/p&gt;</p>
+         <p>&lt;p&gt;    margin: -1px;&lt;/p&gt;</p>
+         <p>&lt;p&gt;    transition: background-size 150ms;&lt;/p&gt;</p>
+         <p>&lt;p&gt;}&lt;/p&gt;</p>
+         <p>&lt;p&gt;@media (hover: hover) {&lt;/p&gt;</p>
+         <p>&lt;p&gt;    .blue-link:hover {&lt;/p&gt;</p>
+         <p>&lt;p&gt;        color: var(--constant-light-mode-second-color-dark);&lt;/p&gt;</p>
+         <p>&lt;p&gt;        background-size: 100% 100%;&lt;/p&gt;</p>
+         <p>&lt;p&gt;    }&lt;/p&gt;</p>
+         <p>&lt;p&gt;}&lt;/p&gt;</p>
+         <p>&lt;p&gt;&lt;code class="inline-code"&gt;&lt;/code&gt;`&lt;/p&gt;</p>
+         <p>&lt;p&gt;Here's a video of the link without the &lt;code class="inline-code"&gt;hover&lt;/code&gt; media query wrapped around the &lt;code class="inline-code"&gt;:hover&lt;/code&gt; pseudo-class (I'm using Inspect Elements to mimic a touchscreen). After returning to the website with the link, you can see that the &lt;code class="inline-code"&gt;:hover&lt;/code&gt; styling sticks :(&lt;/p&gt;</p>
+         <p>&lt;p&gt;VIDEO HERE&lt;/p&gt;</p>
+         <p>&lt;p&gt;The link background sticks and doesn't go away until tapping somewhere else on the screen. But, here's what it looks like with the &lt;code class="inline-code"&gt;hover&lt;/code&gt; media query fix on a touchscreen:&lt;/p&gt;</p>
+         <p>&lt;p&gt;VIDEO HERE&lt;/p&gt;</p>
+         <p>&lt;p&gt;And you can also see that the hover effect still works as expected with a cursor:&lt;/p&gt;</p>
+         <p>&lt;p&gt;VIDEO HERE&lt;/p&gt;</p>
+
+    <h2 class="c17" id="h.wnipqq1fifbq"><span class="c1">Display Content on Touchscreens</span></h2>
+
+        <p>&lt;p&gt;The other way that I like to use &lt;code class="inline-code"&gt;hover&lt;/code&gt; is to automatically show users extra information that would normally only be seen by hovering over an element. Let's say we have some sort of icon/tooltip that, when hovered over, displays additional information about said icon. On a touchscreen, we may want this information to always be visible since there's no hover capability. Here's how we can achieve that:&lt;/p&gt;</p>
+         <p>&lt;p&gt;&lt;code class="inline-code"&gt;&lt;/code&gt;html&lt;/p&gt;</p>
+         <p>&lt;p&gt;&amp;amp;lt;div class="info-icon"&amp;amp;gt;An icon/button/image&amp;amp;lt;/div&amp;amp;gt;&lt;/p&gt;</p>
+         <p>&lt;p&gt;&amp;amp;lt;div class="info-tooltip"&amp;amp;gt;Some text explaining what the icon does&amp;amp;lt;/div&amp;amp;gt;&lt;/p&gt;</p>
+         <p>&lt;p&gt;&lt;code class="inline-code"&gt;&lt;/code&gt;`&lt;/p&gt;</p>
+         <p>&lt;p&gt;&lt;code class="inline-code"&gt;&lt;/code&gt;`css&lt;/p&gt;</p>
+         <p>&lt;p&gt;.info-tooltip {&lt;/p&gt;</p>
+         <p>&lt;p&gt;    display: none;&lt;/p&gt;</p>
+         <p>&lt;p&gt;    background-color: lightgray;&lt;/p&gt;</p>
+         <p>&lt;p&gt;}&lt;/p&gt;</p>
+         <p>&lt;p&gt;.info-icon:hover + .info-tooltip {&lt;/p&gt;</p>
+         <p>&lt;p&gt;    display: inline-block;&lt;/p&gt;</p>
+         <p>&lt;p&gt;}&lt;/p&gt;</p>
+         <p>&lt;p&gt;@media (hover: none) {&lt;/p&gt;</p>
+         <p>&lt;p&gt;    .info-tooltip {&lt;/p&gt;</p>
+         <p>&lt;p&gt;        display: inline-block;&lt;/p&gt;</p>
+         <p>&lt;p&gt;    }&lt;/p&gt;</p>
+         <p>&lt;p&gt;}&lt;/p&gt;</p>
+         <p>&lt;p&gt;&lt;code class="inline-code"&gt;&lt;/code&gt;`&lt;/p&gt;</p>
+         <p>&lt;p&gt;In this snippet, the tooltip is initially set to &lt;code class="inline-code"&gt;display: none;&lt;/code&gt; and becomes visible when the user hovers over the info icon. However, it's shown immediately if the browser (probably a phone) doesn't support hovering. Here's what the result looks like:&lt;/p&gt;</p>
+         <p>&lt;p&gt;VIDEO HERE&lt;/p&gt;</p>
+
 <h1 class="c10" id="h.xihjmr73yfl9"><span class="c9 c11">Final Thoughts</span></h1>
-<p>&lt;p&gt;Both &lt;code class="inline-code"&gt;hover&lt;/code&gt; and &lt;code class="inline-code"&gt;any-hover&lt;/code&gt; are great ways to ensure that your site works on all types of devices, all while improving users' experiences. The examples I showed are the most common ways that I use them, but there are basically an endless number of creative use cases for them. Make sure to use them next time you're writing some responsive CSS!&lt;/p&gt;</p>
+
+    <p>&lt;p&gt;Both &lt;code class="inline-code"&gt;hover&lt;/code&gt; and &lt;code class="inline-code"&gt;any-hover&lt;/code&gt; are great ways to ensure that your site works on all types of devices, all while improving users' experiences. The examples I showed are the most common ways that I use them, but there are basically an endless number of creative use cases for them. Make sure to use them next time you're writing some responsive CSS!&lt;/p&gt;</p>
 </body>
-</html>
