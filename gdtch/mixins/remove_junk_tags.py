@@ -1,7 +1,7 @@
-from urllib.parse import urlparse, parse_qs
 import html as phtml
 from lxml import html
 import re
+
 
 class RemoveJunkTags:
     def clean_p_tags_and_text(self):
