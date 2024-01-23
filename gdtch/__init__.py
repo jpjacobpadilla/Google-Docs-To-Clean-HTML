@@ -46,9 +46,6 @@ class Cleaner(
                     file.write(f"\n{' ' * 4 * indent}{html.tostring(item, method='html', encoding='utf-8').decode('utf-8')}\n\n")
                     indent = int(item.tag[-1]) 
 
-                elif item.xpath('.//a'):
-                    element = item.xpath('.//a')[0]
-                    print(html.tostring(element, pretty_print=True, encoding='utf-8', method='html').decode('utf-8'))
                 elif item.tag == 'pre':
                     file.write(f"\n\n{html.tostring(item, method='html', encoding='utf-8').decode('utf-8')}\n\n\n")
 
