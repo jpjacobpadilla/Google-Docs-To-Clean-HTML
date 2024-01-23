@@ -40,23 +40,6 @@ class Cleaner(
         indent = 0
 
         with open(f'{file_path}/cleaned_html.html', mode='w', encoding='utf-8') as file:
-            # for item in self.elements:
-            #     if re.match(r'h[1-6]$', item.tag): 
-            #         indent = int(item.tag[-1]) - 1
-
-            #         file.write('\n')
-            #         file.write(' ' * 4 * indent + html.tostring(item, method='html', encoding='utf-8').decode('utf-8') + '\n')
-            #         file.write('\n')
-
-            #         indent = int(item.tag[-1]) 
-
-            #     elif item.tag == 'pre':
-            #         file.write('\n\n')
-            #         file.write(' ' * 4 * indent + html.tostring(item, method='html', encoding='utf-8').decode('utf-8') + '\n')
-            #         file.write('\n\n')
-
-            #     else:
-            #         file.write(' ' * 4 * indent + html.tostring(item, method='html', encoding='utf-8').decode('utf-8') + '\n')
             for item in self.elements:
                 if re.match(r'h[1-6]$', item.tag): 
                     indent = int(item.tag[-1]) - 1
