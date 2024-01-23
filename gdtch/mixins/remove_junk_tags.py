@@ -1,11 +1,11 @@
-import html as phtml
 from lxml import html
 import re
 
 
 class RemoveJunkTags:
-    def remove_empty_tags(self):
+    def remove_empty_tags(self) -> None:
         i = 0
+
         while i < len(self.elements):
             tag = self.elements[i]
 
@@ -15,8 +15,9 @@ class RemoveJunkTags:
             else:
                 i += 1
 
-    def clean_p_tags_and_text(self):
+    def clean_p_tags_and_text(self) -> None:
         i = 0
+
         while i < len(self.elements):
             tag = self.elements[i]
 
