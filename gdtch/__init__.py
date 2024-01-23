@@ -8,6 +8,7 @@ from lxml import html
 from gdtch.mixins.remove_junk_tags import RemoveJunkTags
 from gdtch.mixins.remove_top_of_document import RemoveTopOfDocument
 from gdtch.mixins.clean_attributes import CleanAttributes
+from gdtch.mixins.clean_text import CleanText
 from gdtch.mixins.alter_text import AlterText
 from gdtch.mixins.multiline_transform import MultiLineTransformations
 from gdtch.mixins.add_elements import AddElements
@@ -22,6 +23,7 @@ class Cleaner(
     RemoveTopOfDocument,
     CleanAttributes,
     AlterText,
+    CleanText,
     MultiLineTransformations,
     AddElements,
     AddAttributes
