@@ -2,7 +2,7 @@ from urllib.parse import urlparse, parse_qs
 
 
 class CleanAttributes:
-    def clean_all_attributes(self) -> None:
+    def clean_element_attributes(self) -> None:
         self.remove_junk_attrs()
         self.clean_a_tag_attrs()
         self.clean_img_tag_attrs()

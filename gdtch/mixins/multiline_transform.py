@@ -4,7 +4,7 @@ from lxml import html
 
 
 class MultiLineTransformations:
-    def create_highlightjs_code_blocks(self) -> None:
+    def insert_highlightjs_code_blocks(self) -> None:
         i = 0
 
         while i < len(self.elements):
@@ -28,7 +28,7 @@ class MultiLineTransformations:
 
             i += 1
 
-    def create_images(self, article_file_name: str) -> None:
+    def add_image_attributes(self, article_file_name: str) -> None:
         i = 0
 
         while i < len(self.elements):
