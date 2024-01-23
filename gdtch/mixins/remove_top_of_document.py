@@ -1,6 +1,5 @@
 class RemoveTopOfDocument:
     def remove_top_of_document(self, element_break: str = 'hr') -> None:
-        for item in self.elements:
-            if item.tag == element_break:
-                break
-            item.drop_tree()
+        while self.elements[0].tag != element_break:
+            self.elements.pop(0)
+        self.elements.pop(0)

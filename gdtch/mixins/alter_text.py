@@ -7,7 +7,6 @@ class AlterText:
 
         for i, element in enumerate(self.elements):
             if element.text:
-                print('here')
                 text = html.tostring(element, method='html', encoding='utf-8').decode('utf-8')
                 text = pattern.sub(r'<code class="inline-code">\1</code>', text)
                 self.elements[i] = html.fromstring(text)
