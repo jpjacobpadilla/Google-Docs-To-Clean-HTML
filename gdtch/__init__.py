@@ -25,21 +25,19 @@ class Cleaner(
 ):
 
     def __init__(self, file_path: str):
-        self.root = self.create_tree(file_path)
+        self.elements = self.get_elements(file_path)
 
     @staticmethod
-    def create_tree(file_path: str) -> HtmlElement:
+    def get_elements(file_path: str) -> list[HtmlElement]:
         with open(file_path, mode='r', encoding='utf-8') as file:
             root = html.parse(file).getroot()
-        
-        root.find('./head/style').drop_tree()
-        return root
+        return root.find('./body/*')
 
     def pretty_save(self, file_path: str = '.') -> None:
         indent = 0
 
         with open(f'{file_path}/cleaned_html.html', mode='w', encoding='utf-8') as file:
-            for item in self.root.iterfind('./body/*'):
+            for item in self.elements:
                 if re.match(r'h[1-6]$', item.tag): 
                     indent = int(item.tag[-1]) - 1
 
