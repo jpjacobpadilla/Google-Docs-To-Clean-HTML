@@ -27,5 +27,5 @@ class MultiLineTransformations:
 
             i += 1
 
-    def create_images(self) -> None:
+    def create_images(self, article_file_name: str) -> None:
         pass
