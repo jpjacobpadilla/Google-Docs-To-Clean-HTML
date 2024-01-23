@@ -1,9 +1,9 @@
 from __future__ import annotations
+
 from typing import TYPE_CHECKING
-
 import re
-from lxml import html
 
+from lxml import html
 
 from gdtch.mixins.remove_junk_tags import RemoveJunkTags
 from gdtch.mixins.remove_top_of_document import RemoveTopOfDocument
