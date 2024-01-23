@@ -26,12 +26,13 @@ class Cleaner(
 
     def __init__(self, file_path: str):
         self.elements = self.get_elements(file_path)
+        print(type(self.elements))
 
     @staticmethod
     def get_elements(file_path: str) -> list[HtmlElement]:
         with open(file_path, mode='r', encoding='utf-8') as file:
             root = html.parse(file).getroot()
-        return root.find('./body/*')
+        return list(root.body.iterchildren())
 
     def pretty_save(self, file_path: str = '.') -> None:
         indent = 0
