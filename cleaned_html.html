@@ -1,101 +1,27 @@
-<p>Today I want to talk about my favorite media queries in CSS, <code class="inline-code">hover</code> and <code class="inline-code">any-hover</code>, which let you detect if a user is able to hover over elements on your website. Besides the width-based media queries, to help with responsive design, the hover media queries have been by far the most useful for me. In this article, I’m going to go over two extremely useful ways that I use the hover media queries, but first, let’s talk about how they actually work.</p>
-
-<h1 id="what-do-they-even-do?">What Do They Even Do?</h1>
-
-    <p>Starting with <code class="inline-code">hover</code>, this media query is used to check if the primary input mechanism of a user’s device can hover over elements. Generally, a computer’s primary input mechanism is a mouse or trackpad, which controls a cursor on a screen; since cursors can move over elements, they are able to hover over things. However, touchscreens have a primary input of touch, which can’t really hover over elements...</p>
-    <p>While <code class="inline-code">hover</code> is the one that I generally use, there is also <code class="inline-code">any-hover</code>, which looks at all of the currently available input methods and tells you if any of them can hover over things. An example where this would be useful is if a person is using an iPad with a Bluetooth mouse connected to it. Since the primary input of an iPad is touch, <code class="inline-code">hover</code> would fail the test, but <code class="inline-code">any-hover</code> would pass the test because it looks at all input methods, and a mouse, which on an iPad will appear as a tiny circle on the screen, can hover over elements.</p>
-    <p>Both <code class="inline-code">hover</code> and <code class="inline-code">any-hover</code> have two modes: <code class="inline-code">hover</code>, meaning that the user can hover over elements, and <code class="inline-code">none</code>, signaling that they can’t. Here’s what the syntax looks like with <code class="inline-code">hover</code>; for <code class="inline-code">any-hover</code>, swap <code class="inline-code">hover</code> with <code class="inline-code">any-hover</code>.</p>
-
-
-<pre><code class="language-css hljs">@media (hover: hover) {
-    /* The user can hover - generally with a mouse cursor */
-}
-
-@media (hover: none) {
-    /* No hovering available - generally a touchscreen */
-}</code></pre>
+<p>[alt=”An image of the hover media query example on a touchscreen”](</p>
+<p><img alt="" src="images/image1.png" style="width: 318.38px; height: 166.39px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""></p>
+<p>)</p>
+<p>This is another image below:</p>
+<p><br>[alt=”An image of the hover media query example on a touchscreen” class=”small”](</p>
+<p><img alt="" src="images/image1.png" style="width: 318.38px; height: 166.39px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""></p>
+<p>)</p>
+<p>This is a test. Here is some <code class="inline-code">code</code> inline.</p>
+<p>This is python:</p>
 
 
-
-<h1 id="why-you-need-to-start-using-them">Why You Need to Start Using Them</h1>
-
-    <p>Now, let’s go over the main use cases for the hover media query! I’m going to use <code class="inline-code">hover</code> for the examples, but they will all work with <code class="inline-code">any-hover</code>.</p>
-
-    <h2 id="fix-glitchy-hovering-on-touchscreens">Fix Glitchy Hovering on Touchscreens</h2>
-
-        <p>One of the most useful ways of using <code class="inline-code">hover</code> is to fix glitchy, also called “sticky”, hover effects on your website. Sticky hovering is caused when there’s a hover animation on an element, but when tapping on it with a touchscreen, the <code class="inline-code">:hover</code> pseudo-class styling, which may make the element darker or show an underline, sticks and never goes away.</p>
-        <p>An example of this issue (that’s solved with <code class="inline-code">hover</code>) are my links <a href="%E2%80%9Chttps://jacobpadilla.com%E2%80%9D" class="“blue-link”">which change background color when hovering over them</a>. When a user is able to hover, the text gets darker, and a background appears under the link, which helps the links be more visible and thus more accessible.</p>
-        <p>Here’s the code I wrote for the links:</p>
-        <p>Some HTML:</p>
+<pre><code class="language-python hljs">def test():
+    print(‘hello’)</code></pre>
 
 
-<pre><code class="language-html hljs">&lt;a class=“blue-link” href=“a-link-here” target=“_blank”&gt;Link Text&lt;/a&gt;</code></pre>
+<p>This has inline <code class="inline-code">code</code>... and three dots before this</p>
+<p>Css (should render wrong:</p>
 
 
-        <p>The link styling:</p>
+<pre><code class="language-css hljs">def test():
+    print(‘hello’)</code></pre>
 
 
-<pre><code class="language-css hljs">.blue-link {
-    text-decoration: none;
-    cursor: pointer;
-    color: var(--second-color);
-
-    background-image: linear-gradient(var(--second-color-opaque), var(--second-color-opaque));
-    background-size: 100% 0px;
-    background-position: bottom;
-    background-repeat: no-repeat;
-    
-    /* 1px padding around background */
-    background-clip: border-box;
-    padding: 1px;
-    margin: -1px;
-
-    transition: background-size 150ms;
-}
-
-@media (hover: hover) {
-    .blue-link:hover {
-        color: var(--constant-light-mode-second-color-dark);
-        background-size: 100% 100%;
-    }
-}</code></pre>
-
-
-        <p>Here’s a video of the link without the <code class="inline-code">hover</code> media query wrapped around the <code class="inline-code">:hover</code> pseudo-class - I’m using Inspect Elements to mimic a touchscreen:</p>
-        <p>VIDEO HERE</p>
-        <p>The link background sticks and doesn’t go away until tapping somewhere else on the screen. But, here’s what it looks like with the <code class="inline-code">hover</code> media query fix on a touchscreen:</p>
-        <p>VIDEO HERE</p>
-        <p>And you can also see that the hover effect still works as expected with a cursor:</p>
-        <p>VIDEO HERE</p>
-
-    <h2 id="display-content-on-touchscreens">Display Content on Touchscreens</h2>
-
-        <p>The other way that I like to use <code class="inline-code">hover</code> is to automatically show users extra information that would normally only be seen by hovering over an element. Let’s say we have some sort of icon/tooltip that, when hovered over, displays additional information about said icon. On a touchscreen, we may want this information to always be visible since there’s no hover capability. Here’s how we can achieve that:</p>
-        <p><code class="inline-code"></code>html</p>
-        <p>&lt;div class=“info-icon”&gt;An icon/button/image&lt;/div&gt;</p>
-        <p>&lt;div class=“info-tooltip”&gt;Some text explaining what the icon does&lt;/div&gt;</p>
-        <p>```</p>
-
-
-<pre><code class="language-css hljs">.info-tooltip {
-    display: none;
-    background-color: lightgray;
-}
-
-.info-icon:hover + .info-tooltip {
-    display: inline-block;
-}
-
-@media (hover: none) {
-    .info-tooltip {
-        display: inline-block;
-    }
-}</code></pre>
-
-
-        <p>In this snippet, the tooltip is initially set to <code class="inline-code">display: none;</code> and becomes visible when the user hovers over the info icon. However, it’s shown immediately if the browser (probably a phone) doesn’t support hovering. Here’s what the result looks like:</p>
-        <p>VIDEO HERE</p>
-
-<h1 id="final-thoughts">Final Thoughts</h1>
-
-    <p>Both <code class="inline-code">hover</code> and <code class="inline-code">any-hover</code> are great ways to ensure that your site works on all types of devices, all while improving users’ experiences. The examples I showed are the most common ways that I use them, but there are basically an endless number of creative use cases for them. Make sure to use them next time you’re writing some responsive CSS!</p>
+<p>A link to my <a href="%E2%80%9Chttps://jacobpadilla.com/%E2%80%9C" class="“blue-link”">website</a></p>
+<p>A link to another <a href="%E2%80%9Chttps://reddit.com%E2%80%9D" class="“blue-link”" target="“_blank”">website</a></p>
+<p>—--</p>
+<p>done</p>

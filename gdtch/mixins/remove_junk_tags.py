@@ -9,7 +9,10 @@ class RemoveJunkTags:
         while i < len(self.elements):
             tag = self.elements[i]
 
-            if len(tag.xpath('.//text()')) == 0 or tag.xpath('.//text()')[0].isspace():
+            if not tag.xpath('.//img') and (
+                len(tag.xpath('.//text()')) == 0 or 
+                tag.xpath('.//text()')[0].isspace()):
+
                 self.elements.pop(i)
 
             else:

@@ -6,7 +6,7 @@ class CleanAttributes:
         self.remove_junk_attrs()
         self.clean_a_tag_attrs()
 
-    def remove_junk_attrs(self, exclude: set[str] = {'a'}) -> None:
+    def remove_junk_attrs(self, exclude: set[str] = {'a', 'img'}) -> None:
         for element in self.elements:
             for item in element.iter(): 
                 if item.tag not in exclude:
