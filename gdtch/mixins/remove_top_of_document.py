@@ -3,5 +3,5 @@ class RemoveTopOfDocument:
         while self.elements[0].tag != element_break:
             self.elements.pop(0)
 
-        if self.elements[0].tag != element_break:
+        if self.elements[0].tag == element_break:
             self.elements.pop(0)
