@@ -4,7 +4,7 @@ from lxml import html
 import re
 
 class RemoveJunkTags:
-    def clean_p_tags(self):
+    def clean_p_tags_and_text(self):
         i = 0
         while i < len(self.elements):
             p = self.elements[i]
@@ -14,10 +14,17 @@ class RemoveJunkTags:
 
             if len(p.xpath('.//text()')) > 0 and not p.xpath('.//text()')[0].isspace():
                 cleaned_p = self.clean_html(p)
-                decoded_string = html.tostring(cleaned_p, encoding='utf-8', method='html').decode('utf-8')
-                no_extra_space_string = re.sub(r'\s+</p>', '</p>', decoded_string)
-                new_html = no_extra_space_string.replace("‘", "'").replace("’", "'")
-                p = html.fromstring(new_html)
+
+                text = html.tostring(cleaned_p, encoding='utf-8', method='html').decode('utf-8')
+
+                text = re.sub(r'\s+</p>', '</p>', text)
+                text = re.sub(r'(?<!\w)"', '“', text)  # Opening double quotes
+                text = re.sub(r'"', '”', text)  # Closing double quotes
+                text = re.sub(r"(?<!\w)'", '‘', text)  # Opening single quotes
+                text = re.sub(r"'", '’', text)  # Closing single quotes
+
+                p = html.fromstring(phtml.escape(text, quote=False))
+
                 i += 1
 
             else:
