@@ -6,6 +6,9 @@ class AlterText:
         pattern = re.compile(r'`(.*?)`')
 
         for i, element in enumerate(self.elements):
+            if element.text and element.text.startswith('```'):
+                continue
+
             if element.text:
                 text = html.tostring(element, method='html', encoding='utf-8').decode('utf-8')
                 text = pattern.sub(r'<code class="inline-code">\1</code>', text)
