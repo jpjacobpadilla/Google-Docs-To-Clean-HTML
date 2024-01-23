@@ -1,15 +1,3 @@
-<style>
-
-pre, code {
-    white-space: pre-line;
-}
-
-pre > code > i {
-    white-space: pre;
-}
-</style>
-
-
 <p>Today I want to talk about my favorite media queries in CSS, <code class="inline-code">hover</code> and <code class="inline-code">any-hover</code>, which let you detect if a user is able to hover over elements on your website. Besides the width-based media queries, to help with responsive design, the hover media queries have been by far the most useful for me. In this article, I’m going to go over two extremely useful ways that I use the hover media queries, but first, let’s talk about how they actually work.</p>
 
 <h1 id="what-do-they-even-do?">What Do They Even Do?</h1>
@@ -19,14 +7,14 @@ pre > code > i {
     <p>Both <code class="inline-code">hover</code> and <code class="inline-code">any-hover</code> have two modes: <code class="inline-code">hover</code>, meaning that the user can hover over elements, and <code class="inline-code">none</code>, signaling that they can’t. Here’s what the syntax looks like with <code class="inline-code">hover</code>; for <code class="inline-code">any-hover</code>, swap <code class="inline-code">hover</code> with <code class="inline-code">any-hover</code>.</p>
 
 
-    <pre><code><i>@media (hover: hover) {</i><br>
-    <i>    /* The user can hover - generally with a mouse cursor */</i><br>
-    <i>}</i><br>
-    <i></i><br>
-    <i>@media (hover: none) {</i><br>
-    <i>    /* No hovering available - generally a touchscreen */</i><br>
-    <i>}</i><br>
-    </code></pre>
+<pre><code class="language-css hljs">@media (hover: hover) {
+    /* The user can hover - generally with a mouse cursor */
+}
+
+@media (hover: none) {
+    /* No hovering available - generally a touchscreen */
+}</code></pre>
+
 
 
 <h1 id="why-you-need-to-start-using-them">Why You Need to Start Using Them</h1>
@@ -41,37 +29,37 @@ pre > code > i {
         <p>Some HTML:</p>
 
 
-        <pre><code><i>&lt;a class=“blue-link” href=“a-link-here” target=“_blank”&gt;Link Text&lt;/a&gt;</i><br>
-        </code></pre>
+<pre><code class="language-html hljs">&lt;a class=“blue-link” href=“a-link-here” target=“_blank”&gt;Link Text&lt;/a&gt;</code></pre>
+
 
         <p>The link styling:</p>
 
 
-        <pre><code><i>.blue-link {</i><br>
-        <i>    text-decoration: none;</i><br>
-        <i>    cursor: pointer;</i><br>
-        <i>    color: var(--second-color);</i><br>
-        <i></i><br>
-        <i>    background-image: linear-gradient(var(--second-color-opaque), var(--second-color-opaque));</i><br>
-        <i>    background-size: 100% 0px;</i><br>
-        <i>    background-position: bottom;</i><br>
-        <i>    background-repeat: no-repeat;</i><br>
-        <i>    </i><br>
-        <i>    /* 1px padding around background */</i><br>
-        <i>    background-clip: border-box;</i><br>
-        <i>    padding: 1px;</i><br>
-        <i>    margin: -1px;</i><br>
-        <i></i><br>
-        <i>    transition: background-size 150ms;</i><br>
-        <i>}</i><br>
-        <i></i><br>
-        <i>@media (hover: hover) {</i><br>
-        <i>    .blue-link:hover {</i><br>
-        <i>        color: var(--constant-light-mode-second-color-dark);</i><br>
-        <i>        background-size: 100% 100%;</i><br>
-        <i>    }</i><br>
-        <i>}</i><br>
-        </code></pre>
+<pre><code class="language-css hljs">.blue-link {
+    text-decoration: none;
+    cursor: pointer;
+    color: var(--second-color);
+
+    background-image: linear-gradient(var(--second-color-opaque), var(--second-color-opaque));
+    background-size: 100% 0px;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    
+    /* 1px padding around background */
+    background-clip: border-box;
+    padding: 1px;
+    margin: -1px;
+
+    transition: background-size 150ms;
+}
+
+@media (hover: hover) {
+    .blue-link:hover {
+        color: var(--constant-light-mode-second-color-dark);
+        background-size: 100% 100%;
+    }
+}</code></pre>
+
 
         <p>Here’s a video of the link without the <code class="inline-code">hover</code> media query wrapped around the <code class="inline-code">:hover</code> pseudo-class - I’m using Inspect Elements to mimic a touchscreen:</p>
         <p>VIDEO HERE</p>
@@ -89,21 +77,21 @@ pre > code > i {
         <p>```</p>
 
 
-        <pre><code><i>.info-tooltip {</i><br>
-        <i>    display: none;</i><br>
-        <i>    background-color: lightgray;</i><br>
-        <i>}</i><br>
-        <i></i><br>
-        <i>.info-icon:hover + .info-tooltip {</i><br>
-        <i>    display: inline-block;</i><br>
-        <i>}</i><br>
-        <i></i><br>
-        <i>@media (hover: none) {</i><br>
-        <i>    .info-tooltip {</i><br>
-        <i>        display: inline-block;</i><br>
-        <i>    }</i><br>
-        <i>}</i><br>
-        </code></pre>
+<pre><code class="language-css hljs">.info-tooltip {
+    display: none;
+    background-color: lightgray;
+}
+
+.info-icon:hover + .info-tooltip {
+    display: inline-block;
+}
+
+@media (hover: none) {
+    .info-tooltip {
+        display: inline-block;
+    }
+}</code></pre>
+
 
         <p>In this snippet, the tooltip is initially set to <code class="inline-code">display: none;</code> and becomes visible when the user hovers over the info icon. However, it’s shown immediately if the browser (probably a phone) doesn’t support hovering. Here’s what the result looks like:</p>
         <p>VIDEO HERE</p>
