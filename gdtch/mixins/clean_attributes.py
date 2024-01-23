@@ -1,5 +1,6 @@
 from urllib.parse import urlparse, parse_qs
 
+
 class CleanAttributes:
     def clean_all_attributes(self):
         self.remove_junk_attrs()
@@ -23,9 +24,3 @@ class CleanAttributes:
                     actual_link = query_params['q'][0]
                     a.attrib['href'] = actual_link 
                     a.attrib['class'] = 'blue-link'
-
-    def generate_header_id_attributes(self):
-        pass
-
-    def add_target_to_outgoing_links(self, target='_blank'):
-        pass
