@@ -14,6 +14,6 @@ cleaner.insert_inline_code()
 cleaner.create_highlightjs_code_blocks()
 cleaner.remove_empty_tags()
 cleaner.create_images(article_file_name='hover-media-query')
-# cleaner.add_element_above_tag(tag='img', add='br')
+cleaner.add_element_above_tag(tag='img', add='<br>')
 
 cleaner.pretty_save(file_path='.')
