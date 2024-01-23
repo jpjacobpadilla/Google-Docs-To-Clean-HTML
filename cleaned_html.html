@@ -1,123 +1,92 @@
-<p><span><img></span></p>
-<p><span>Title: </span><span>The Most Underused CSS Media Queries: Hover &amp; Any-Hover</span></p>
-<p><span></span></p>
-<p><span>Table of Contents:</span></p>
+<p>Title: The Most Underused CSS Media Queries: Hover &amp; Any-Hover</p>
+<p>Table of Contents:</p>
 <ul><li><span>What Do They Even Do?</span></li><li><span>Why You Need to Start Using Them</span></li></ul>
 <ul><li><span>Fix Glitchy Hovering on Touchscreens</span></li><li><span>Display Content on Touchscreens</span></li></ul>
 <ul><li><span>Final Thoughts</span></li></ul>
 <hr>
-<p><span></span></p>
-<p><span></span></p>
-<p><span>Today I want to talk about my favorite media queries in CSS, `hover` and `any-hover`, which let you detect if a user is able to hover over elements on your website. Besides the width-based media queries, to help with responsive design, the hover media queries have been by far the most useful for me. In this article I’m going to go over two extremely useful ways that I use the hover media queries, but first, let’s talk about how they actually work.</span></p>
+<p>Today I want to talk about my favorite media queries in CSS, `hover` and `any-hover`, which let you detect if a user is able to hover over elements on your website. Besides the width-based media queries, to help with responsive design, the hover media queries have been by far the most useful for me. In this article I’m going to go over two extremely useful ways that I use the hover media queries, but first, let’s talk about how they actually work.</p>
 
 <h1><span>What Do They Even Do?</span></h1>
 
-    <p><span>Starting with `hover`, this media query is used to check if the primary input mechanism of a user's device can hover over elements. Generally, a computer's primary input mechanism is a mouse or trackpad, which controls a cursor on a screen; since cursors can move over elements, they are able to hover over things. However, touchscreens have a primary input of touch, which can't really hover over elements...</span></p>
-    <p><span></span></p>
-    <p><span>While `hover` is the one that I generally use, there is also `any-hover`, which looks at all of the currently available input methods and tells you if any of them can hover over things. An example where this would be useful is if a pers<p><span></span></p><p><span>While `hover` is the one that I generally use, there is also `any-hover`, which looks at all of the currently available input methods and tells you if any of them can hover over things. An example where this would be useful is if a pTESTING TESTING TESTIN GTESTIN GTESTING TESTING TESTGIN TESTNG TESTIN GTESTIN GESTIN WAIGNW FOIAWNF AWOIEFN AWFOINAW FOWIENFW TESTING TESTIN GTESTIN G++++++++++++++++++++++++++++++++++++over over elements.</span></p>on is using an iPad with a Bluetooth mouse connected to it. Since the primary input of an iPad is touch, `hover` would fail the test, but `any-hover` would pass the test because it looks at all input methods, and a mouse, which on an iPad will appear as a tiny circle on the screen, can hover over elements.</span></p>
-    <p><span></span></p>
-    <p><span>Both `hover` and `any-hover` have two modes: `hover`, meaning that the user can hover over elements, and `none`, signaling that they can't. Here's what the syntax looks like with `hover`; for `any-hover`, swap `hover` with `any-hover`.</span></p>
-    <p><span></span></p>
-    <p><span>```css</span></p>
-    <p><span>@media (hover: hover) {</span></p>
-    <p><span>    /* The user can hover - generally with a mouse cursor */</span></p>
-    <p><span>}</span></p>
-    <p><span></span></p>
-    <p><span>@media (hover: none) {</span></p>
-    <p><span>    /* No hovering available - generally a touchscreen */</span></p>
-    <p><span>}</span></p>
-    <p><span>```</span></p>
+    <p>Starting with `hover`, this media query is used to check if the primary input mechanism of a user's device can hover over elements. Generally, a computer's primary input mechanism is a mouse or trackpad, which controls a cursor on a screen; since cursors can move over elements, they are able to hover over things. However, touchscreens have a primary input of touch, which can't really hover over elements...</p>
+    <p>While `hover` is the one that I generally use, there is also `any-hover`, which looks at all of the currently available input methods and tells you if any of them can hover over things. An example where this would be useful is if a pers<p><span></span></p><p><span>While `hover` is the one that I generally use, there is also `any-hover`, which looks at all of the currently available input methods and tells you if any of them can hover over things. An example where this would be useful is if a pTESTING TESTING TESTIN GTESTIN GTESTING TESTING TESTGIN TESTNG TESTIN GTESTIN GESTIN WAIGNW FOIAWNF AWOIEFN AWFOINAW FOWIENFW TESTING TESTIN GTESTIN G++++++++++++++++++++++++++++++++++++over over elements.</span></p>on is using an iPad with a Bluetooth mouse connected to it. Since the primary input of an iPad is touch, `hover` would fail the test, but `any-hover` would pass the test because it looks at all input methods, and a mouse, which on an iPad will appear as a tiny circle on the screen, can hover over elements.</p>
+    <p>Both `hover` and `any-hover` have two modes: `hover`, meaning that the user can hover over elements, and `none`, signaling that they can't. Here's what the syntax looks like with `hover`; for `any-hover`, swap `hover` with `any-hover`.</p>
+    <p>```css</p>
+    <p>@media (hover: hover) {</p>
+    <p>    /* The user can hover - generally with a mouse cursor */</p>
+    <p>}</p>
+    <p>@media (hover: none) {</p>
+    <p>    /* No hovering available - generally a touchscreen */</p>
+    <p>}</p>
+    <p>```</p>
 
 <h1><span>Why You Need to Start Using Them</span></h1>
 
-    <p><span>Now, let’s go over the main use cases for the hover media query! I’m going to use `hover` for the examples, but they will all work with `any-hover`.</span></p>
+    <p>Now, let’s go over the main use cases for the hover media query! I’m going to use `hover` for the examples, but they will all work with `any-hover`.</p>
 
     <h2><span>Fix Glitchy Hovering on Touchscreens</span></h2>
 
-        <p><span>One of the most useful ways of using `hover` is to fix glitchy, also called “sticky”, hover effects on your website. Sticky hovering is caused when there’s a hover animation on an element, but when tapping on it with a touchscreen, the `:hover` pseudo-class styling, which may make the <a href="https://jacobpadNOTNOTNOTNOTNOTilla.com" class="blue-link" target="_blank">which change background color when hovering over them</a>element darker or show an underline, sticks and never goes away.</span></p>
-        <p><span></span></p>
-        <p><span>An example of this issue (that’s solved with `hover`) are my links </span><span><a href="https://jacobpadilla.com" class="blue-link">which change background color when hovering over them</a></span><span>. When a user is able to hover, the text gets darker, and a background appears under the link, which helps the links be more visible and thus more accessible. </span></p>
-        <p><span></span></p>
-        <p><span>Here’s the code I wrote for the links:</span></p>
-        <p><span></span></p>
-        <p><span>Some HTML:</span></p>
-        <p><span></span></p>
-        <p><span>```html</span></p>
-        <p><span>&lt;a class="blue-link" href="a-link-here" target="_blank"&gt;Link Text&lt;/a&gt;</span></p>
-        <p><span>```</span></p>
-        <p><span></span></p>
-        <p><span>The link styling:</span></p>
-        <p><span></span></p>
-        <p><span>``css</span></p>
-        <p><span>.blue-link {</span></p>
-        <p><span>    text-decoration: none;</span></p>
-        <p><span>    cursor: pointer;</span></p>
-        <p><span>    color: var(--second-color);</span></p>
-        <p><span></span></p>
-        <p><span>    background-image: linear-gradient(var(--second-color-opaque), var(--second-color-opaque));</span></p>
-        <p><span>    background-size: 100% 0px;</span></p>
-        <p><span>    background-position: bottom;</span></p>
-        <p><span>    background-repeat: no-repeat;</span></p>
-        <p><span>    </span></p>
-        <p><span>    /* 1px padding around background */</span></p>
-        <p><span>    background-clip: border-box;</span></p>
-        <p><span>    padding: 1px;</span></p>
-        <p><span>    margin: -1px;</span></p>
-        <p><span></span></p>
-        <p><span>    transition: background-size 150ms;</span></p>
-        <p><span>}</span></p>
-        <p><span></span></p>
-        <p><span>@media (hover: hover) {</span></p>
-        <p><span>    .blue-link:hover {</span></p>
-        <p><span>        color: var(--constant-light-mode-second-color-dark);</span></p>
-        <p><span>        background-size: 100% 100%;</span></p>
-        <p><span>    }</span></p>
-        <p><span>}</span></p>
-        <p><span>```</span></p>
-        <p><span></span></p>
-        <p><span>Here's a video of the link without the `hover` media query wrapped around the `:hover` pseudo-class (I’m using Inspect Elements to mimic a touchscreen). After returning to the website with the link, you can see that the `:hover` styling sticks :(</span></p>
-        <p><span></span></p>
-        <p><span>VIDEO HERE</span></p>
-        <p><span></span></p>
-        <p><span>The link background sticks and doesn’t go away until tapping somewhere else on the screen.</span><span> But, here’s what it looks like with the `hover` media query fix on a touchscreen:</span></p>
-        <p><span></span></p>
-        <p><span>VIDEO HERE</span></p>
-        <p><span></span></p>
-        <p><span>And you can also see that the hover effect still works as expected with a cursor:</span></p>
-        <p><span></span></p>
-        <p><span>VIDEO HERE</span></p>
+        <p>One of the most useful ways of using `hover` is to fix glitchy, also called “sticky”, hover effects on your website. Sticky hovering is caused when there’s a hover animation on an element, but when tapping on it with a touchscreen, the `:hover` pseudo-class styling, which may make the <a href="https://jacobpadNOTNOTNOTNOTNOTilla.com" class="blue-link" target="_blank">which change background color when hovering over them</a>element darker or show an underline, sticks and never goes away.</p>
+        <p>An example of this issue (that’s solved with `hover`) are my links <a href="https://jacobpadilla.com" class="blue-link">which change background color when hovering over them</a>. When a user is able to hover, the text gets darker, and a background appears under the link, which helps the links be more visible and thus more accessible. </p>
+        <p>Here’s the code I wrote for the links:</p>
+        <p>Some HTML:</p>
+        <p>```html</p>
+        <p>&lt;a class="blue-link" href="a-link-here" target="_blank"&gt;Link Text&lt;/a&gt;</p>
+        <p>```</p>
+        <p>The link styling:</p>
+        <p>``css</p>
+        <p>.blue-link {</p>
+        <p>    text-decoration: none;</p>
+        <p>    cursor: pointer;</p>
+        <p>    color: var(--second-color);</p>
+        <p>    background-image: linear-gradient(var(--second-color-opaque), var(--second-color-opaque));</p>
+        <p>    background-size: 100% 0px;</p>
+        <p>    background-position: bottom;</p>
+        <p>    background-repeat: no-repeat;</p>
+        <p>    /* 1px padding around background */</p>
+        <p>    background-clip: border-box;</p>
+        <p>    padding: 1px;</p>
+        <p>    margin: -1px;</p>
+        <p>    transition: background-size 150ms;</p>
+        <p>}</p>
+        <p>@media (hover: hover) {</p>
+        <p>    .blue-link:hover {</p>
+        <p>        color: var(--constant-light-mode-second-color-dark);</p>
+        <p>        background-size: 100% 100%;</p>
+        <p>    }</p>
+        <p>}</p>
+        <p>```</p>
+        <p>Here's a video of the link without the `hover` media query wrapped around the `:hover` pseudo-class (I’m using Inspect Elements to mimic a touchscreen). After returning to the website with the link, you can see that the `:hover` styling sticks :(</p>
+        <p>VIDEO HERE</p>
+        <p>The link background sticks and doesn’t go away until tapping somewhere else on the screen. But, here’s what it looks like with the `hover` media query fix on a touchscreen:</p>
+        <p>VIDEO HERE</p>
+        <p>And you can also see that the hover effect still works as expected with a cursor:</p>
+        <p>VIDEO HERE</p>
 
     <h2><span>Display Content on Touchscreens</span></h2>
 
-        <p><span>The other way that I like to use `hover` is to automatically show users extra information that would normally only be seen by hovering over an element. Let's say we have some sort of icon/tooltip that, when hovered over, displays additional information about said icon. On a touchscreen, we may want this information to always be visible since there's no hover capability. Here's how we can achieve that:</span></p>
-        <p><span></span></p>
-        <p><span>``html</span></p>
-        <p><span>&lt;div class="info-icon"&gt;An icon/button/image&lt;/div&gt;</span></p>
-        <p><span>&lt;div class="info-tooltip"&gt;Some text explaining what the icon does&lt;/div&gt; </span></p>
-        <p><span>```</span></p>
-        <p><span></span></p>
-        <p><span>```css</span></p>
-        <p><span>.info-tooltip {</span></p>
-        <p><span>    display: none;</span></p>
-        <p><span>    background-color: </span><span>lightgray</span><span>;</span></p>
-        <p><span>}</span></p>
-        <p><span></span></p>
-        <p><span>.info-icon:hover + .info-tooltip {</span></p>
-        <p><span>    display: inline-block;</span></p>
-        <p><span>}</span></p>
-        <p><span></span></p>
-        <p><span>@media (hover: none) {</span></p>
-        <p><span>    .info-tooltip {</span></p>
-        <p><span>        display: inline-block;</span></p>
-        <p><span>    }</span></p>
-        <p><span>}</span></p>
-        <p><span>```</span></p>
-        <p><span></span></p>
-        <p><span>In this snippet, the tooltip is initially set to `display: none;` and becomes visible when the user hovers over the info icon. However, it’s shown immediately if the browser (probably a phone) doesn’t support hovering. Here’s what the result looks like:</span></p>
-        <p><span></span></p>
-        <p><span>VIDEO HERE</span></p>
+        <p>The other way that I like to use `hover` is to automatically show users extra information that would normally only be seen by hovering over an element. Let's say we have some sort of icon/tooltip that, when hovered over, displays additional information about said icon. On a touchscreen, we may want this information to always be visible since there's no hover capability. Here's how we can achieve that:</p>
+        <p>``html</p>
+        <p>&lt;div class="info-icon"&gt;An icon/button/image&lt;/div&gt;</p>
+        <p>&lt;div class="info-tooltip"&gt;Some text explaining what the icon does&lt;/div&gt; </p>
+        <p>```</p>
+        <p>```css</p>
+        <p>.info-tooltip {</p>
+        <p>    display: none;</p>
+        <p>    background-color: lightgray;</p>
+        <p>}</p>
+        <p>.info-icon:hover + .info-tooltip {</p>
+        <p>    display: inline-block;</p>
+        <p>}</p>
+        <p>@media (hover: none) {</p>
+        <p>    .info-tooltip {</p>
+        <p>        display: inline-block;</p>
+        <p>    }</p>
+        <p>}</p>
+        <p>```</p>
+        <p>In this snippet, the tooltip is initially set to `display: none;` and becomes visible when the user hovers over the info icon. However, it’s shown immediately if the browser (probably a phone) doesn’t support hovering. Here’s what the result looks like:</p>
+        <p>VIDEO HERE</p>
 
 <h1><span>Final Thoughts</span></h1>
 
-    <p><span>Both `hover` and `any-hover` are great ways to ensure that your site works on all types of devices, all while improving users’ experiences. The examples I showed are the most common ways that I use them, but there are basically an endless number of creative use cases for them. Make sure to use them next time you’re writing some responsive CSS!</span></p>
-    <p><span></span></p>
+    <p>Both `hover` and `any-hover` are great ways to ensure that your site works on all types of devices, all while improving users’ experiences. The examples I showed are the most common ways that I use them, but there are basically an endless number of creative use cases for them. Make sure to use them next time you’re writing some responsive CSS!</p>
