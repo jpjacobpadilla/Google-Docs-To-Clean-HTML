@@ -1,7 +1,7 @@
 from gdtch import Cleaner
 
 
-html_file = "testing/Google-Doc-HTML-Files/testing (1)/testing.html"
+html_file = "testing/Google-Doc-HTML-Files/testing (2)/testing.html"
 
 cleaner = Cleaner(html_file)
 
