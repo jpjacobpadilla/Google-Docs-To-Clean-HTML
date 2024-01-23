@@ -1,11 +1,12 @@
 from gdtch import Cleaner
 
 
-html_file = "testing/Google-Doc-HTML-Files/testing (3)/testing.html"
+html_file = "testing/Google-Doc-HTML-Files/Copy of How to Set Up Free Monitoring and Alerting for Your Website (1)/CopyofHowtoSetUpFreeMonitoringandAlertingforY.html"
 
 cleaner = Cleaner(html_file)
 
 # cleaner.remove_top_of_document(element_break='hr')
+# cleaner.turn_spans_into_formatting_tags(strong='', strikethrough='', italics='', underline='')
 cleaner.clean_all_attributes()
 cleaner.add_target_to_outgoing_links(origin="jacobpadilla.com", target='_blank')
 cleaner.remove_span_tags()
