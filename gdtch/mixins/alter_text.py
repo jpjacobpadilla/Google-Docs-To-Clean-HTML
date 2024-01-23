@@ -1,6 +1,7 @@
 import re
 from lxml import html, etree
 
+
 class AlterText:
     def insert_inline_code(self) -> None:
         pattern = re.compile(r'`(.*?)`')

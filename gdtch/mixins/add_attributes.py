@@ -1,6 +1,7 @@
 from urllib.parse import urlparse
 import re
 
+
 class AddAttributes:
     def add_target_to_outgoing_links(self, /, origin: str, target: str) -> None:
         for element in self.elements:
