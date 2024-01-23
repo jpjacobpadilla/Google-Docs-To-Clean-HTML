@@ -42,20 +42,40 @@ class Cleaner(
         indent = 0
 
         with open(f'{file_path}/cleaned_html.html', mode='w', encoding='utf-8') as file:
-            for item in self.elements:
-                if re.match(r'h[1-6]$', item.tag): 
-                    indent = int(item.tag[-1]) - 1
-                    file.write(f"\n{' ' * 4 * indent}{html.tostring(item, method='html', encoding='utf-8').decode('utf-8')}\n\n")
-                    indent = int(item.tag[-1]) 
+            # for item in self.elements:
+            #     if re.match(r'h[1-6]$', item.tag): 
+            #         indent = int(item.tag[-1]) - 1
+            #         file.write(f"\n{' ' * 4 * indent}{html.tostring(item, method='html', encoding='utf-8').decode('utf-8')}\n\n")
+            #         indent = int(item.tag[-1]) 
 
-                elif item.tag == 'pre':
-                    file.write(f"\n\n{html.tostring(item, method='html', encoding='utf-8').decode('utf-8')}\n\n\n")
+            #     elif item.tag == 'pre':
+            #         file.write(f"\n\n{html.tostring(item, method='html', encoding='utf-8').decode('utf-8')}\n\n\n")
                 
-                elif item.tag == 'br':
-                    file.write(f"\n{' ' * 4 * indent}{html.tostring(item, method='html', encoding='utf-8').decode('utf-8')}\n")
+            #     elif item.tag == 'br':
+            #         file.write(f"\n{' ' * 4 * indent}{html.tostring(item, method='html', encoding='utf-8').decode('utf-8')}\n")
 
-                elif item.tag == 'img':
-                    file.write(f"{' ' * 4 * indent}{html.tostring(item, method='html', encoding='utf-8').decode('utf-8')}\n\n")
+            #     elif item.tag == 'img':
+            #         file.write(f"{' ' * 4 * indent}{html.tostring(item, method='html', encoding='utf-8').decode('utf-8')}\n\n")
 
-                else:
-                    file.write(f"{' ' * 4 * indent}{html.tostring(item, method='html', encoding='utf-8').decode('utf-8')}\n")
+            #     else:
+            #         file.write(f"{' ' * 4 * indent}{html.tostring(item, method='html', encoding='utf-8').decode('utf-8')}\n")
+            for item in self.elements:
+                match list(item.tag):
+                    case ('h', _):
+                        indent = int(item.tag[-1])
+                        formatted_item = f"\n{' ' * 4 * (indent - 1)}{html.tostring(item, method='html', encoding='utf-8').decode('utf-8')}\n\n"
+
+                    case 'pre':
+                        formatted_item = f"\n\n{html.tostring(item, method='html', encoding='utf-8').decode('utf-8')}\n\n\n"
+
+                    case 'br':
+                        formatted_item = f"\n{' ' * 4 * indent}{html.tostring(item, method='html', encoding='utf-8').decode('utf-8')}\n"
+
+                    case 'img':
+                        formatted_item = f"{' ' * 4 * indent}{html.tostring(item, method='html', encoding='utf-8').decode('utf-8')}\n\n"
+                    
+                    case _:
+                        formatted_item = f"{' ' * 4 * indent}{html.tostring(item, method='html', encoding='utf-8').decode('utf-8')}\n"
+
+                file.write(formatted_item)
+                        
