@@ -12,8 +12,8 @@ class MultiLineTransformations:
                 self.elements.pop(i)
 
                 code = ''
-                while not re.match(r'```$', self.elements[i].text):
-                    code += self.elements[i].text + '\n'
+                while self.elements[i].text is None or not re.match(r'```$', self.elements[i].text):
+                    code += f'{"" if not (text := self.elements[i].text) else text}\n'
                     self.elements.pop(i)
 
                 self.elements.pop(i)

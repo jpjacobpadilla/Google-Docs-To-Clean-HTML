@@ -1,3 +1,15 @@
+<style>
+
+pre, code {
+    white-space: pre-line;
+}
+
+pre > code > i {
+    white-space: pre;
+}
+</style>
+
+
 <p>Today I want to talk about my favorite media queries in CSS, <code class="inline-code">hover</code> and <code class="inline-code">any-hover</code>, which let you detect if a user is able to hover over elements on your website. Besides the width-based media queries, to help with responsive design, the hover media queries have been by far the most useful for me. In this article, I’m going to go over two extremely useful ways that I use the hover media queries, but first, let’s talk about how they actually work.</p>
 
 <h1 id="what-do-they-even-do?">What Do They Even Do?</h1>
@@ -10,6 +22,7 @@
     <pre><code><i>@media (hover: hover) {</i><br>
     <i>    /* The user can hover - generally with a mouse cursor */</i><br>
     <i>}</i><br>
+    <i></i><br>
     <i>@media (hover: none) {</i><br>
     <i>    /* No hovering available - generally a touchscreen */</i><br>
     <i>}</i><br>
@@ -38,16 +51,20 @@
         <i>    text-decoration: none;</i><br>
         <i>    cursor: pointer;</i><br>
         <i>    color: var(--second-color);</i><br>
+        <i></i><br>
         <i>    background-image: linear-gradient(var(--second-color-opaque), var(--second-color-opaque));</i><br>
         <i>    background-size: 100% 0px;</i><br>
         <i>    background-position: bottom;</i><br>
         <i>    background-repeat: no-repeat;</i><br>
+        <i>    </i><br>
         <i>    /* 1px padding around background */</i><br>
         <i>    background-clip: border-box;</i><br>
         <i>    padding: 1px;</i><br>
         <i>    margin: -1px;</i><br>
+        <i></i><br>
         <i>    transition: background-size 150ms;</i><br>
         <i>}</i><br>
+        <i></i><br>
         <i>@media (hover: hover) {</i><br>
         <i>    .blue-link:hover {</i><br>
         <i>        color: var(--constant-light-mode-second-color-dark);</i><br>
@@ -76,9 +93,11 @@
         <i>    display: none;</i><br>
         <i>    background-color: lightgray;</i><br>
         <i>}</i><br>
+        <i></i><br>
         <i>.info-icon:hover + .info-tooltip {</i><br>
         <i>    display: inline-block;</i><br>
         <i>}</i><br>
+        <i></i><br>
         <i>@media (hover: none) {</i><br>
         <i>    .info-tooltip {</i><br>
         <i>        display: inline-block;</i><br>
