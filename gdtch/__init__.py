@@ -50,6 +50,12 @@ class Cleaner(
 
                 elif item.tag == 'pre':
                     file.write(f"\n\n{html.tostring(item, method='html', encoding='utf-8').decode('utf-8')}\n\n\n")
+                
+                elif item.tag == 'br':
+                    file.write(f"\n{html.tostring(item, method='html', encoding='utf-8').decode('utf-8')}\n")
+
+                elif item.tag == 'img':
+                    file.write(f"{html.tostring(item, method='html', encoding='utf-8').decode('utf-8')}\n\n")
 
                 else:
                     file.write(f"{' ' * 4 * indent}{html.tostring(item, method='html', encoding='utf-8').decode('utf-8')}\n")
