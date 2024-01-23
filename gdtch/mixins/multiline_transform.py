@@ -1,4 +1,5 @@
 import re
+import itertools
 from lxml import html
 
 
@@ -28,4 +29,27 @@ class MultiLineTransformations:
             i += 1
 
     def create_images(self, article_file_name: str) -> None:
-        pass
+        i = 0
+
+        while i < len(self.elements):
+            if self.elements[i].tag == 'img':
+                meta_data = self.elements[i - 1].text
+                if not meta_data:
+                    i += 1
+                    continue
+
+                pairs = meta_data.strip('[]').split('=')
+
+                result_dict = {}
+                for key, val in itertools.batched(pairs, 2):
+                    fkey = key.strip('"”” ')
+                    fval = val.strip('"”” ')
+                    result_dict[fkey] = fval
+
+                self.elements.pop(i - 1)
+                i -= 1
+
+                for attr, val in result_dict.items():
+                    self.elements[i].attrib[attr] = val
+
+            i += 1
