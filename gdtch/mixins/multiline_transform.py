@@ -3,7 +3,7 @@ from lxml import html
 
 
 class MultiLineTransformations:
-    def create_highlightjs_code_blocks(self):
+    def create_highlightjs_code_blocks(self) -> None:
         i = 0
 
         while i < len(self.elements):
@@ -27,8 +27,5 @@ class MultiLineTransformations:
 
             i += 1
 
-    def create_images(self):
-        pass
-
-    def create_bullet_point_lists(self):
+    def create_images(self) -> None:
         pass
