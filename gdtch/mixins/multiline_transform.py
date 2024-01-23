@@ -8,6 +8,7 @@ class MultiLineTransformations:
 
         while i < len(self.elements):
             if (text := self.elements[i].text) and re.match(r'```[a-zA-Z]+$', text):
+                lang = self.elements[i].text.removeprefix('```').lower()
                 self.elements.pop(i)
 
                 code = ''
@@ -20,6 +21,7 @@ class MultiLineTransformations:
                 pre_element = html.Element("pre")
                 code_element = html.Element("code")
                 code_element.text = code.removesuffix('\n')
+                code_element.attrib['class'] = f'language-{lang} hljs'
                 pre_element.append(code_element)
                 self.elements.insert(i, pre_element)
 
