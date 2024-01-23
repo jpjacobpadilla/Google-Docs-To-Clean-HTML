@@ -26,7 +26,6 @@ class Cleaner(
 
     def __init__(self, file_path: str):
         self.elements = self.get_elements(file_path)
-        print(type(self.elements))
 
     @staticmethod
     def get_elements(file_path: str) -> list[HtmlElement]:
