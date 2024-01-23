@@ -8,7 +8,7 @@ from gdtch.mixins.remove_junk_tags import RemoveJunkTags
 from gdtch.mixins.remove_top_of_document import RemoveTopOfDocument
 from gdtch.mixins.clean_attributes import CleanAttributes
 from gdtch.mixins.alter_text import AlterText
-from gdtch.mixins.multiline_transform import MultiLineTransform
+from gdtch.mixins.multiline_transform import MultiLineTransformations
 from gdtch.mixins.add_elements import AddElements
 
 if TYPE_CHECKING:
@@ -20,7 +20,7 @@ class Cleaner(
     RemoveTopOfDocument,
     CleanAttributes,
     AlterText,
-    MultiLineTransform,
+    MultiLineTransformations,
     AddElements
 ):
 

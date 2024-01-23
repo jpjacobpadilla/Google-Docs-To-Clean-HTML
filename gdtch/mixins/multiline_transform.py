@@ -1,4 +1,4 @@
-class MultiLineTransform:
+class MultiLineTransformations:
     def create_images(self):
         pass
 
