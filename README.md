@@ -45,11 +45,11 @@ Get rid of the Google Docs generated attributes. This method actually calls thre
 
 `a` tags and `img` tags are special because we want to keep the src attribute of the image element and parse the `a` tag attributes to extract the clean url for the `href` attribute.
 
-### **add_class_to_element(self, /, element: str, class_attr: str = '') -> None:**
+### **add_class_to_element(self, *, element: str, class_attr: str = '') -> None:**
 
 Add one or more classes to an element.
 
-### **add_target_to_outgoing_links(self, /, origin: str, target: str) -> None:**
+### **add_target_to_outgoing_links(self, *, origin: str, target: str) -> None:**
 
 Add a target attribute to all of the outgoing links. For example, if I want to open all links that aren't to jacobpadilla.com, I could set origin = "jacobpadilla.com" and target to "_blank".
 
@@ -87,7 +87,7 @@ The template is a Python string. The original source is stored in a variable, th
 
 Example: `articles/{original}` will output `articles/images/image[number].jpg
 
-### **add_element_above_tag_type(self, /, type: str, add: str) -> None:**
+### **add_element_above_tag_type(self, *, type: str, add: str) -> None:**
 
 Add an element above another. This method will add an lxml.html.HtmlElement one slot above another element in the self.elements list. I use this to add a `br` tag above my `img` tags because I never added margin-top to the images on my website :)
 
