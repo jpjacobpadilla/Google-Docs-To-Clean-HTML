@@ -143,8 +143,7 @@ cleaner.pretty_save(file_path='.')
 
 ## Setup
 
-**REQUIRES PYTHON 3.12**
-To use all of the features in this package, you'll need Python 3.12. The only part that needs this version is the `alter_image_attribute` method due to the `itertools.batched` function.
+**REQUIRES PYTHON 3.12** to use all of the features. The only part that needs this version is the `alter_image_attribute` method due to the `itertools.batched` function.
 
 Clone the repo (and star it)
 ```
