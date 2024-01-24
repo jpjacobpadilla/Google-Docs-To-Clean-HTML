@@ -30,7 +30,7 @@ class MultiLineTransformations:
 
             i += 1
 
-    def alter_image_attribute(self, path_template: str = '{}') -> None:
+    def alter_image_attributes(self, path_template: str = '{}') -> None:
         i = 0
 
         while i < len(self.elements):
@@ -38,12 +38,11 @@ class MultiLineTransformations:
                 meta_data = self.elements[i - 1].text
                 if not meta_data: raise NoImageMetadata()
 
-                pairs = meta_data.strip('[]').split('=')
-
+                pairs = self.make_pairs(meta_data)
                 for key, val in itertools.batched(pairs, 2):
-                    fkey = key.strip('"”” ')
-                    fval = val.strip('"”” ')
-                    self.elements[i].attrib[fkey] = fval
+                    formatted_key = key.strip('"”” ')
+                    formatted_val = val.strip('"”” ')
+                    self.elements[i].attrib[formatted_key] = formatted_val
                 
                 original_src = self.elements[i].attrib['src']
                 self.elements[i].attrib['src'] = path_template.format(original=original_src)
@@ -52,3 +51,25 @@ class MultiLineTransformations:
                 i -= 1
 
             i += 1
+
+    @staticmethod
+    def make_pairs(meta_data: str) -> list[str]:
+        pairs = []
+        part = ''
+        inserted = False
+
+        for letter in meta_data:
+            if letter in '[]':
+                continue
+            if letter in '=""”“':
+                if not inserted:
+                    pairs.append(part.strip())
+                    inserted = True
+            else:
+                if inserted:
+                    part = ''
+                    inserted = False
+
+                part += letter
+
+        return pairs
