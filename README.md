@@ -35,7 +35,7 @@ To use the program, you can pick and choose which parts of the HTML that you wan
 
 Remove the top part of the document. I like to make an outline on the top part of my article documents and then divide the main article from the outline with a horizontal line.
 
-## **clean_element_attributes(self) -> None:**
+### **clean_element_attributes(self) -> None:**
 
 Get rid of the Google Docs generated attributes. This method actually calls three more methods: 
 
