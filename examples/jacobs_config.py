@@ -1,8 +1,8 @@
 from gdtch import Cleaner
 
 
-HTML_FILE = ''
-URL_NAME = ''
+HTML_FILE = 'examples/CopyofHowtoSetUpFreeMonitoringandAlertingforY.html'
+URL_NAME = 'test'
 
 cleaner = Cleaner(HTML_FILE)
 
@@ -18,7 +18,7 @@ cleaner.insert_highlightjs_code_blocks()
 cleaner.remove_empty_tags()
 
 # Super messy template for flask's Jinja server side rendering engine
-cleaner.alter_image_attribute(path_template=f"{{{{{{{{url_for('articles.static',filename='{URL_NAME}/static/{{original}}')}}}}}}}}")
+cleaner.alter_image_attributes(path_template=f"{{{{{{{{url_for('articles.static',filename='{URL_NAME}/static/{{original}}')}}}}}}}}")
 
 cleaner.add_element_above_tag_type(type='img', add='<br>')
 

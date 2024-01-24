@@ -77,7 +77,7 @@ I use [Highlight.js](https://highlightjs.org/) to add colors to the multiline co
 
 Remove empty tags. Google Docs will make an empty `p` for things likes blank lines.
 
-### **alter_image_attribute(self, path_template: str = '{}') -> None:**
+### **alter_image_attributes(self, path_template: str = '{}') -> None:**
 
 If you have images in your Google document, when you download the HTML, they will be stored in a directory called `images` and the `src` of the html `img` elements will be `images/image[number].jpg. This is not always what you want, hence this method.
 
@@ -135,7 +135,7 @@ cleaner.generate_header_id_attributes()
 cleaner.insert_inline_code()
 cleaner.insert_highlightjs_code_blocks()
 cleaner.remove_empty_tags()
-cleaner.alter_image_attribute(path_template='articles/example/{original}')
+cleaner.alter_image_attributes(path_template='articles/example/{original}')
 cleaner.add_element_above_tag_type(type='img', add='<br>')
 
 cleaner.pretty_save(file_path='.')
@@ -143,7 +143,7 @@ cleaner.pretty_save(file_path='.')
 
 ## Setup
 
-**REQUIRES PYTHON 3.12** to use all of the features. The only part that needs this version is the `alter_image_attribute` method due to the `itertools.batched` function.
+**REQUIRES PYTHON 3.12** to use all of the features. The only part that needs this version is the `alter_image_attributes` method due to the `itertools.batched` function.
 
 Clone the repo (and star it)
 ```

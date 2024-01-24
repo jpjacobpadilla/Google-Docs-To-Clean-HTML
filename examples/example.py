@@ -1,7 +1,7 @@
 from gdtch import Cleaner
 
 
-HTML_FILE = '/PATH/TO/HTML/FILe/NAME.html'
+HTML_FILE = 'examples/CopyofHowtoSetUpFreeMonitoringandAlertingforY.html'
 
 cleaner = Cleaner(HTML_FILE)
 
