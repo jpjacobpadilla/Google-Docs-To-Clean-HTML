@@ -48,13 +48,13 @@ class Cleaner(
 
         with open(f'{file_path}/cleaned_html.html', mode='w', encoding='utf-8') as file:
             for item in self.elements:
-                match list(item.tag):
-                    case ('h', _):
+                match item.tag:
+                    case _ if item.tag.startswith('h') and item.tag[-1].isnumeric():
                         indent = int(item.tag[-1])
                         formatted_item = f"\n{' ' * 4 * (indent - 1)}{html.tostring(item, method='html', encoding='utf-8').decode('utf-8')}\n\n"
 
                     case 'pre':
-                        formatted_item = f"\n\n{html.tostring(item, method='html', encoding='utf-8').decode('utf-8')}\n\n\n"
+                        formatted_item = f"\n{' ' * 4 * indent}{html.tostring(item, method='html', encoding='utf-8').decode('utf-8')}\n\n"
 
                     case 'br':
                         formatted_item = f"\n{' ' * 4 * indent}{html.tostring(item, method='html', encoding='utf-8').decode('utf-8')}\n"
