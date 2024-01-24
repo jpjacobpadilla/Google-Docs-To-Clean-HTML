@@ -1,4 +1,4 @@
-class GoogleDocsToCleanHTML(Exception):
+class GoogleDocsToCleanHTMLError(Exception):
     """Base Exception"""
 
     START_COLOR = "\033[95m"
@@ -15,7 +15,7 @@ class GoogleDocsToCleanHTML(Exception):
         super().__init__(f'{self.START_COLOR}{message}{self.REPORT_MSG}{self.END_COLOR}')
 
     
-class NoBreakElementFound(GoogleDocsToCleanHTML):
+class NoBreakElementFound(GoogleDocsToCleanHTMLError):
     """
     This Exception is raised when the method remove_top_of_document 
     goes through all of the elements in the self.elements list
@@ -23,7 +23,7 @@ class NoBreakElementFound(GoogleDocsToCleanHTML):
     """
     pass
 
-class NoImageMetadata(GoogleDocsToCleanHTML):
+class NoImageMetadata(GoogleDocsToCleanHTMLError):
     """
     Above the image in Google Docs, you need to add [attrs here] which will
     become the image element attributes. 
@@ -37,7 +37,7 @@ class NoImageMetadata(GoogleDocsToCleanHTML):
     """
     pass
 
-class WrongFilePathToHTML(GoogleDocsToCleanHTML):
+class WrongFilePathToHTML(GoogleDocsToCleanHTMLError):
     """
     This exception is raised if the path to the .html file is incorrect when
     creating an instance of gdtch.Cleaner(THIS IS THE PATH THATS WRONG).
