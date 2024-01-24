@@ -2,7 +2,7 @@
     <img src="graphics/logo.png" width="800px">
 </p>
 
-# Google Docs To Clean HTML
+<h1 align="center">Google Docs To Clean HTML</h1>
 
 This program allows you to take the messy auto-generated HTML that Google Docs gives you when downloading a file in HTML format and turn it into clean and usable HTML. This is mainly built for my [tech blog](https://jacobpadilla.com), but I decided to make it public as others may find it helpful. That being said, the program cannot clean all HTML elements yet (such as tables and videos) - More about what this program can clean below. 
 
