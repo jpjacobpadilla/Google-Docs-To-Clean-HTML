@@ -141,7 +141,7 @@ $ source venv/bin/activate
 $ pip install -e .
 ```
 
-Make a python file, like the example one above and then run it!
+Make a python file, like the example ones in the `example` directory and then run it!
 
 ## Contributions
 
