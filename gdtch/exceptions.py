@@ -5,7 +5,7 @@ class GoogleDocsToCleanHTML(Exception):
     END_COLOR = "\033[0m"
 
     REPORT_MSG = """\n\t
-        Feel free to submit a report here:
+        If this is an issue with the underlying package, feel free to submit a report here:
         https://github.com/jpjacobpadilla/Google-Docs-To-Clean-HTML/issues/new
     """
 
