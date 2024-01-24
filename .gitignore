@@ -1,6 +1,9 @@
 # Secret stuff
 testing/
 
+# testing
+cleaned_html.html
+
 # The basics
 .DS_Store
 venv/

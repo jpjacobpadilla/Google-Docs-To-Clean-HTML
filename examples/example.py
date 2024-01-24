@@ -1,12 +1,12 @@
 from gdtch import Cleaner
 
 
-HTML_FILE = "testing/Google-Doc-HTML-Files/Copy of How to Set Up Free Monitoring and Alerting for Your Website (1)/CopyofHowtoSetUpFreeMonitoringandAlertingforY.html"
-URL_NAME = 'test'
+HTML_FILE = ''
+URL_NAME = ''
 
 cleaner = Cleaner(HTML_FILE)
 
-# cleaner.remove_top_of_document(element_break='hr')
+cleaner.remove_top_of_document(element_break='hr')
 cleaner.clean_element_attributes()
 cleaner.add_class_to_element(element='a', class_attr='blue-link')
 cleaner.add_target_to_outgoing_links(origin="jacobpadilla.com", target='_blank')

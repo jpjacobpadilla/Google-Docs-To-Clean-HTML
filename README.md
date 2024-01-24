@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="logo.png" width="800px">
+    <img src="graphics/logo.png" width="800px">
 </p>
 
 # Google Docs To Clean HTML
@@ -26,7 +26,7 @@ When creating an instanse, the Cleaner object will read the html file and put ev
 
 Currently, this project supports the following type of Google Docs styling. It's limited for now, since these are the only things that I use for my website, but hopefully by open-sourcing this, the feature-set will improve.
 
-<img src="supported.jpg">
+<img src="graphics/supported.jpg">
 
 ## How to use it
 To use the program, you can pick and choose which parts of the HTML that you want to clean. As more features are added, you can add more! 
@@ -118,7 +118,7 @@ cleaner.generate_header_id_attributes()
 cleaner.insert_inline_code()
 cleaner.insert_highlightjs_code_blocks()
 cleaner.remove_empty_tags()
-cleaner.alter_image_attribute(path_template=f"{{{{{{{{url_for('articles.static',filename='{URL_NAME}/static/{{original}}')}}}}}}}}")
+cleaner.alter_image_attribute(path_template='articles/example/{original}')
 cleaner.add_element_above_tag_type(type='img', add='<br>')
 
 cleaner.pretty_save(file_path='.')
