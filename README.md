@@ -147,14 +147,14 @@ cleaner.pretty_save(file_path='.')
 
 Clone the repo (and star it)
 ```
-$ clone https://github.com/jpjacobpadilla/Google-Docs-To-Clean-HTML.git
+$ git clone https://github.com/jpjacobpadilla/Google-Docs-To-Clean-HTML.git
 ```
 
 Make a Python environment and pip install the package in editable mode so that you can easily make changes to the source code.
 ```
 $ python -m venv venv
 $ source venv/bin/activate
-$ pip install -e .
+$ pip install -e Google-Docs-To-Clean-HTML/
 ```
 
 Make a Python file, like the example ones in the `example` directory, and then run it!
