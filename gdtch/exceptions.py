@@ -22,3 +22,17 @@ class NoBreakElementFound(GoogleDocsToCleanHTML):
     but can't find the element_break tag.
     """
     pass
+
+class NoImageMetadata(GoogleDocsToCleanHTML):
+    """
+    Above the image in Google Docs, you need to add [attrs here] which will
+    become the image element attributes. 
+
+    Example:
+
+    [alt="the alt"]
+    IMAGE HERE
+
+    More about this on the GitHub README. 
+    """
+    pass

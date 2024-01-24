@@ -3,11 +3,11 @@ from urllib.parse import urlparse, parse_qs
 
 class CleanAttributes:
     def clean_element_attributes(self) -> None:
-        self.remove_junk_attrs()
+        self.remove_junk_attrs(exclude={'a', 'img'})
         self.clean_a_tag_attrs()
         self.clean_img_tag_attrs()
 
-    def remove_junk_attrs(self, exclude: set[str] = {'a', 'img'}) -> None:
+    def remove_junk_attrs(self, exclude: set[str] = {}) -> None:
         for element in self.elements:
             for item in element.iter(): 
                 if item.tag not in exclude:
@@ -32,4 +32,3 @@ class CleanAttributes:
                 if 'q' in query_params:
                     actual_link = query_params['q'][0]
                     a.attrib['href'] = actual_link 
-                    a.attrib['class'] = 'blue-link'

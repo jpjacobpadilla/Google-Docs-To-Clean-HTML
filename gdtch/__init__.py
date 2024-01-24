@@ -1,7 +1,5 @@
 from __future__ import annotations
-
 from typing import TYPE_CHECKING
-import re
 
 from lxml import html
 
@@ -31,7 +29,7 @@ class Cleaner(
 
     def __init__(self, file_path: str):
         self.elements = self.get_elements(file_path)
-
+        
     @staticmethod
     def get_elements(file_path: str) -> list[HtmlElement]:
         with open(file_path, mode='r', encoding='utf-8') as file:

@@ -1,23 +1,26 @@
+<p>Title:</p>
+<p>How to Set Up Free Monitoring and Alerting for Your Website</p>
+<p>Article preview:</p>
+<p>Learn how to deploy Uptime Kuma on Google Cloud's free Virtual Machines with Docker, monitor websites, and configure instant Slack alerts for site issues.</p>
+<p>Article description:</p>
+<p>Learn how to deploy Uptime Kuma on Google Cloud's free Virtual Machines with Docker, monitor websites, and configure instant Slack alerts for site issues.</p>
+<p>Table of Contents:</p>
+<ol><li>Set Up a Google Cloud Account</li><li>Create a VM Instance</li><li>Update Firewall Settings</li><li>Create a Website Monitor</li><li>Simple Slack Notifications</li><li>Final Thoughts</li></ol>
+<p>In this article, I’m going to show you how to use Google Cloud’s free-tier virtual machine to deploy a docker image of <a href="https://github.com/louislam/uptime-kuma" class="blue-link" target="_blank">Uptime Kuma</a> - an excellent open-source monitoring solution. Then, I’ll show you how to set up a monitor for any website, using my own site as an example. Lastly, I will set up Slack notification alerts to be quickly notified if there’s anything wrong with my site.</p>
+<p>It’s about time I set up monitoring and alerting for my website - It’s extremely important for any service, as you need to know when something isn’t working.</p>
+<p>So let’s dive into it:</p>
 
-<h1 id="1---introduction">1 - Introduction</h1>
+<h1 id="set-up-a-google-cloud-account">Set Up a Google Cloud Account</h1>
 
-    <p>A world if there were digital technology</p>
-    <p>Digital culture</p>
-    <ul><li>Values</li><li>Markets</li><li>What it means</li></ul>
-    <p>“Writing is the bedrock of civilization”</p>
-    <p>Cybernetics was a movement in science just as the second world war ended (1945-1970). Macy conferences were where all of this was being talked about.</p>
-    <ul><li>Feedback problem between tech and person (example, defense systems, room temperature)</li><li>Computer networks</li><li>Nervous Network (Precursor to neural networks)</li></ul>
-    <p>A philosophical movement (from scientific folk).</p>
-    <p>Cybernetics is the process of steering processes. (control and communication in the animal and the machine).</p>
-    <p>Three topics:</p>
-    <ul><li>Information</li><li>Computation</li><li>Network</li></ul>
-    <p>He referenced sailing so it could be good to throw a sailing metaphor into an essay.</p>
+    <p>The first thing you'll need to do is create a <a href="https://console.cloud.google.com/getting-started" class="blue-link" target="_blank">Google Cloud account</a>. Once you've created an account, type “compute engine” into the search bar:</p>
+    <br>
+    <img src="{{url_for('articles.static',filename='test/static/images/image2.png')}}" attrs="example for github readme">
+    <p>Then, you will need to select a project (I chose the pre-made “personal projects” one). In Google Cloud, projects are essentially organizational units designed to neatly compartmentalize and manage your resources, APIs, users, and billing for different initiatives.</p>
+    <p>After selecting a project in the top right of the page, you should see the screen below. Since we're using Google Cloud's compute engine (their basic virtual machine service) you'll need to enable that specific API.</p>
+    <br>
+    <img src="{{url_for('articles.static',filename='test/static/images/image1.png')}}" attrs="this is an image about blah blah blah">
+    <p>At this point, Google Cloud will probably ask you to enter in some billing information. However, the monitoring solution I'm making in this article fits within the free tier specifications, so you shouldn't be charged anything.</p>
 
-<h1 id="2---…">2 - …</h1>
+<h1 id="create-a-vm-instance">Create a VM Instance</h1>
 
-    <p>This is a - list:</p>
-    <ul><li>1</li><li>2</li><li>3</li><li>4</li><li>5</li></ul>
-    <p>This is a bullet point list</p>
-    <ul><li>1</li><li>2</li><li>3</li><li>4</li><li>5</li></ul>
-    <p>This is a numere dlist:</p>
-    <ol><li>1</li><li>2</li><li>3</li><li>4</li><li>5</li></ol>
+    <p>Once the compute engine API is turned on (which may take a minute), click the hamburger menu on the top right, then go to “Compute Engine” and then “VM Instance.“ This page is where you'll be able to view, create, and manage all of your virtual machines!</p>
