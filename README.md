@@ -96,6 +96,23 @@ Add an element above another. This method will add an lxml.html.HtmlElement one 
 write all of the lines in self.elements to a new html file. This will print the elements with indentation so that, in my opinion, it's easier to read.
 
 ## Example
+A basic configration would be something such as:
+
+```python
+from gdtch import Cleaner
+
+
+HTML_FILE = ''
+
+cleaner = Cleaner(HTML_FILE)
+
+cleaner.clean_element_attributes()
+cleaner.remove_span_tags()
+cleaner.clean_p_text()
+cleaner.remove_empty_tags()
+
+cleaner.pretty_save(file_path='.')
+```
 
 This is the configuration that I use for the articles on my website:
 
