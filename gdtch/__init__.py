@@ -1,7 +1,11 @@
 from __future__ import annotations
+
 from typing import TYPE_CHECKING
+from pathlib import Path
 
 from lxml import html
+
+from gdtch.exceptions import WrongFilePathToHTML
 
 from gdtch.mixins.remove_junk_tags import RemoveJunkTags
 from gdtch.mixins.remove_top_of_document import RemoveTopOfDocument
@@ -32,6 +36,9 @@ class Cleaner(
         
     @staticmethod
     def get_elements(file_path: str) -> list[HtmlElement]:
+        if not Path(file_path).exists() or Path(file_path).suffix != '.html':
+            raise WrongFilePathToHTML()
+
         with open(file_path, mode='r', encoding='utf-8') as file:
             root = html.parse(file).getroot()
         return list(root.body.iterchildren())

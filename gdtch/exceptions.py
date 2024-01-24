@@ -36,3 +36,10 @@ class NoImageMetadata(GoogleDocsToCleanHTML):
     More about this on the GitHub README. 
     """
     pass
+
+class WrongFilePathToHTML(GoogleDocsToCleanHTML):
+    """
+    This exception is raised if the path to the .html file is incorrect when
+    creating an instance of gdtch.Cleaner(THIS IS THE PATH THATS WRONG).
+    """
+    pass
