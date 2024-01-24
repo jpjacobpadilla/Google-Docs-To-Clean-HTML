@@ -87,7 +87,7 @@ The template is a Python string. The original source is stored in a variable, th
 
 Example: `articles/{original}` will output `articles/images/image[number].jpg
 
-### **add_element_above_tag_type(self, *, type: str, add: str) -> None:**
+### **add_element_above_tag_type(self, \*, type: str, add: str) -> None:**
 
 Add an element above another. This method will add an lxml.html.HtmlElement one slot above another element in the self.elements list. I use this to add a `br` tag above my `img` tags because I never added margin-top to the images on my website :)
 
