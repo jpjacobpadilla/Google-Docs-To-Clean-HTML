@@ -48,22 +48,24 @@ class Cleaner(
 
         with open(f'{file_path}/cleaned_html.html', mode='w', encoding='utf-8') as file:
             for item in self.elements:
+                line = html.tostring(item, method='html', encoding='utf-8').decode('utf-8')
+
                 match item.tag:
                     case _ if item.tag.startswith('h') and item.tag[-1].isnumeric():
                         indent = int(item.tag[-1])
-                        formatted_item = f"\n{' ' * 4 * (indent - 1)}{html.tostring(item, method='html', encoding='utf-8').decode('utf-8')}\n\n"
+                        formatted_item = f"\n{' ' * 4 * (indent - 1)}{line}\n\n"
 
                     case 'pre':
-                        formatted_item = f"\n{' ' * 4 * indent}{html.tostring(item, method='html', encoding='utf-8').decode('utf-8')}\n\n"
+                        formatted_item = f"\n{' ' * 4 * indent}{line}\n\n"
 
                     case 'br':
-                        formatted_item = f"\n{' ' * 4 * indent}{html.tostring(item, method='html', encoding='utf-8').decode('utf-8')}\n"
+                        formatted_item = f"\n{' ' * 4 * indent}{line}\n"
 
                     case 'img':
-                        formatted_item = f"{' ' * 4 * indent}{html.tostring(item, method='html', encoding='utf-8').decode('utf-8')}\n\n"
+                        formatted_item = f"{' ' * 4 * indent}{line}\n\n"
                     
                     case _:
-                        formatted_item = f"{' ' * 4 * indent}{html.tostring(item, method='html', encoding='utf-8').decode('utf-8')}\n"
+                        formatted_item = f"{' ' * 4 * indent}{line}\n"
 
                 file.write(formatted_item)
                         
