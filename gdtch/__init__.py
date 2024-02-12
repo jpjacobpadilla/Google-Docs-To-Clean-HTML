@@ -48,24 +48,36 @@ class Cleaner(
 
         with open(f'{file_path}/cleaned_html.html', mode='w', encoding='utf-8') as file:
             for item in self.elements:
-                line = html.tostring(item, method='html', encoding='utf-8').decode('utf-8')
-
                 match item.tag:
                     case _ if item.tag.startswith('h') and item.tag[-1].isnumeric():
                         indent = int(item.tag[-1])
-                        formatted_item = f"\n{' ' * 4 * (indent - 1)}{line}\n\n"
+                        formatted_item = f"\n{' ' * 4 * (indent - 1)}{self._get_line(item)}\n\n"
 
                     case 'pre':
-                        formatted_item = f"\n{' ' * 4 * indent}{line}\n\n"
+                        formatted_item = f"\n{' ' * 4 * indent}{self._get_line(item)}\n\n"
 
                     case 'br':
-                        formatted_item = f"\n{' ' * 4 * indent}{line}\n"
+                        formatted_item = f"\n{' ' * 4 * indent}{self._get_line(item)}\n"
 
                     case 'img':
-                        formatted_item = f"{' ' * 4 * indent}{line}\n\n"
+                        formatted_item = f"{' ' * 4 * indent}{self._get_line(item)}\n\n"
+
+                    case 'ul':
+                        line = self._get_line(item, pretty_print=True)
+
+                        lines = line.splitlines()
+                        for i in range(1, len(lines) - 1):
+                            lines[i] = ' ' * 4 + lines[i]
+
+                        formatted_line = '\n'.join(lines)
+                        formatted_item = f"\n{' ' * 4 * indent}{formatted_line}\n\n"
                     
                     case _:
-                        formatted_item = f"{' ' * 4 * indent}{line}\n"
+                        formatted_item = f"{' ' * 4 * indent}{self._get_line(item)}\n"
 
                 file.write(formatted_item)
-                        
+    
+    @staticmethod
+    def _get_line(element: HtmlElement, **kwargs) -> str:
+        return html.tostring(element, method='html', encoding='utf-8', **kwargs).decode('utf-8')
+                    
