@@ -91,11 +91,6 @@ Example: `articles/{original}` will output `articles/images/image[number].jpg
 
 Add an element above another. This method will add an lxml.html.HtmlElement one slot above another element in the self.elements list. I use this to add a `br` tag above my `img` tags because I never added margin-top to the images on my website :)
 
-### wrap_list_text_in_p_tag(self) -> None:
-
-Finds ordered and unordered lists and wraps the text of the sub elements (probably li tags)
-in p tags.
-
 ### **pretty_save(self, file_path: str = '.') -> None:**
 
 write all of the lines in self.elements to a new html file. This will print the elements with indentation so that, in my opinion, it's easier to read.

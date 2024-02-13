@@ -16,7 +16,6 @@ cleaner.generate_header_id_attributes()
 cleaner.insert_inline_code()
 cleaner.insert_highlightjs_code_blocks()
 cleaner.remove_empty_tags()
-cleaner.wrap_list_text_in_p_tag()
 
 # Super messy template for flask's Jinja server side rendering engine
 cleaner.alter_image_attributes(path_template=f"{{{{{{{{url_for('articles.static',filename='{URL_NAME}/static/{{original}}')}}}}}}}}")
