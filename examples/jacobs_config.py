@@ -18,6 +18,7 @@ cleaner.insert_highlightjs_code_blocks()
 cleaner.remove_empty_tags()
 
 # Super messy template for flask's Jinja server side rendering engine
+cleaner.give_images_unique_names()  # For cache busting
 cleaner.alter_image_attributes(path_template=f"{{{{{{{{url_for('articles.static',filename='{URL_NAME}/static/{{original}}')}}}}}}}}")
 
 cleaner.add_element_above_tag_type(type='img', add='<br>')

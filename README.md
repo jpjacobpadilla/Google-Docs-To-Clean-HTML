@@ -91,6 +91,11 @@ Example: `articles/{original}` will output `articles/images/image[number].jpg
 
 Add an element above another. This method will add an lxml.html.HtmlElement one slot above another element in the self.elements list. I use this to add a `br` tag above my `img` tags because I never added margin-top to the images on my website :)
 
+### **give_images_unique_names(self) -> None:**
+
+Uses the heading tags to create a more descriptive image name. It also adds a random number to the image names
+to ensure that a client's browser doesn't use a cached image on an page update.
+
 ### **pretty_save(self, file_path: str = '.') -> None:**
 
 write all of the lines in self.elements to a new html file. This will print the elements with indentation so that, in my opinion, it's easier to read.
