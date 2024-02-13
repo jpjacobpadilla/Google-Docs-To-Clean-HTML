@@ -12,7 +12,7 @@ class AddElements:
 
             i += 1
     
-    def wrap_list_content_in_p_tag(self) -> None:
+    def wrap_list_text_in_p_tag(self) -> None:
         """
         Transform elements inside of ul or ol elements with a p tag like such:
 
