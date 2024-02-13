@@ -10,7 +10,6 @@ class AlterText:
             if element.text and element.text.startswith('```'):
                 continue
 
-            if element.text:
-                text = html.tostring(element, method='html', encoding='utf-8').decode('utf-8')
-                text = pattern.sub(r'<code class="inline-code">\1</code>', text)
-                self.elements[i] = html.fromstring(text)
+            text = html.tostring(element, method='html', encoding='utf-8').decode('utf-8')
+            text = pattern.sub(r'<code class="inline-code">\1</code>', text)
+            self.elements[i] = html.fromstring(text)
