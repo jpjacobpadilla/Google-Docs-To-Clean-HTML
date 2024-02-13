@@ -62,12 +62,14 @@ class Cleaner(
                     case 'img':
                         formatted_item = f"{' ' * 4 * indent}{self._get_line(item)}\n\n"
 
-                    case 'ul':
+                    case 'ul' | 'ol':
                         line = self._get_line(item, pretty_print=True)
 
                         lines = line.splitlines()
                         for i in range(1, len(lines) - 1):
-                            lines[i] = ' ' * 4 + lines[i]
+                            lines[i] = ' ' * 4 * indent + ' '  *  4 + lines[i]
+                        
+                        lines[-1] = ' ' * 4 * indent +  lines[-1]
 
                         formatted_line = '\n'.join(lines)
                         formatted_item = f"\n{' ' * 4 * indent}{formatted_line}\n\n"
