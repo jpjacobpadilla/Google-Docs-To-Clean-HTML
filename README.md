@@ -26,7 +26,7 @@ When creating an instance, the Cleaner object will read the HTML file and put ev
 
 Currently, this project supports the following type of Google Document styling. It's limited for now since these are the only things that I use for my website, but hopefully, by open-sourcing this, the feature set will improve.
 
-<img src="graphics/supported.jpg">
+<img src="graphics/supported.png">
 
 ## How to use it
 To use the program, you can pick and choose which parts of the HTML that you want to clean. As more features are added, you can add more! 
