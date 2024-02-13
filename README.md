@@ -16,7 +16,7 @@ First, you need to import the main class:
 from gdtch import Cleaner
 ```
 
-Then you need to create an instance of the object. The only argument it takes is the path to the HTML file - The one you downloaded from Google Docs. To download a Google Documents in as HTML, go to File>Downloads>Web Page. If you use auto-detect markdown mode, you may get errors (I haven't tested with Google Docs auto-detect markdown preference yet).
+Then you need to create an instance of the object. The only argument it takes is the path to the HTML file - The one you downloaded from Google Docs. To download a Google Document as an HTML file, go to File > Downloads > Web Page. If you use auto-detect markdown mode, you may get errors (I haven't tested with Google Docs auto-detect markdown preference yet).
 
 ```python
 cleaner = Cleaner('something_like_this/example.html')
@@ -24,11 +24,10 @@ cleaner = Cleaner('something_like_this/example.html')
 
 When creating an instance, the Cleaner object will read the HTML file and put every child element in the body into a list called self.elements. The HTML elements are put into a Python list because this makes future cleaning operations easier. It also allows other methods to easily iterate through the list, add elements above and below, and join elements together.
 
-Currently, this project supports the following type of Google Document styling. It's limited for now since these are the only things that I use for my website, but hopefully, by open-sourcing this, the feature set will improve.
+Currently, this project supports the following type of Google Document styling. It's limited for now since these are the only things that I use for my website, but hopefully, by open-sourcing this, the feature set will improve. Below are the things that are currently supported:
 
 <img src="graphics/supported.png">
 
-## How to use it
 To use the program, you can pick and choose which parts of the HTML that you want to clean. As more features are added, you can add more! 
 
 ### **remove_top_of_document(self, element_break: str = 'hr') -> None:**
