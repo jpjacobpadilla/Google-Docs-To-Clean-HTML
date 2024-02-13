@@ -12,9 +12,9 @@ class AddElements:
 
             i += 1
     
-    def wrap_li_content_in_p_tag(self) -> None:
+    def wrap_list_content_in_p_tag(self) -> None:
         """
-        Transform:
+        Transform elements inside of ul or ol elements with a p tag like such:
 
             <ul>
                 <li>content</li>
@@ -27,19 +27,17 @@ class AddElements:
             </ul>
         """
         for element in self.elements:
-            if element.tag == 'ul':
-                for li in element:
-                    # Create a new <p> element
+            if element.tag in ('ul', 'ol'):
+                for sub_element in element:
                     p_content = html.Element('p')
 
-                    # Move text (if any) of the <li> element to the <p> element
-                    if li.text:
-                        p_content.text = li.text.strip()
-                        li.text = None  # Clear the text from the <li> after moving it
+                    if sub_element.text:
+                        p_content.text = sub_element.text.strip()
+                        sub_element.text = None 
 
                     # Move all children of the <li> element to the <p> element
-                    for child in list(li):
+                    for child in list(sub_element):
                         p_content.append(child)
-                        li.remove(child)
+                        sub_element.remove(child)
 
-                    li.append(p_content)
+                    sub_element.append(p_content)
