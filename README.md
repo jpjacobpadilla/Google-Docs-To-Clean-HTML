@@ -26,7 +26,7 @@ When creating an instance, the Cleaner object will read the HTML file and put ev
 
 Currently, this project supports the following type of Google Document styling. It's limited for now since these are the only things that I use for my website, but hopefully, by open-sourcing this, the feature set will improve.
 
-<img src="graphics/supported.jpg">
+<img src="graphics/supported-v2.jpg">
 
 ## How to use it
 To use the program, you can pick and choose which parts of the HTML that you want to clean. As more features are added, you can add more! 
@@ -90,6 +90,11 @@ Example: `articles/{original}` will output `articles/images/image[number].jpg
 ### **add_element_above_tag_type(self, \*, type: str, add: str) -> None:**
 
 Add an element above another. This method will add an lxml.html.HtmlElement one slot above another element in the self.elements list. I use this to add a `br` tag above my `img` tags because I never added margin-top to the images on my website :)
+
+### wrap_list_text_in_p_tag(self) -> None:
+
+Finds ordered and unordered lists and wraps the text of the sub elements (probably li tags)
+in p tags.
 
 ### **pretty_save(self, file_path: str = '.') -> None:**
 
