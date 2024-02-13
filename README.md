@@ -28,7 +28,7 @@ Currently, this project supports the following type of Google Document styling. 
 
 <img src="graphics/supported.png">
 
-To use the program, you can pick and choose which parts of the HTML that you want to clean. As more features are added, you can add more! 
+To use the program, you can pick from the following methods to choose which parts of the HTML to clean. As more features are added, you can clean more! 
 
 ### **remove_top_of_document(self, element_break: str = 'hr') -> None:**
 
