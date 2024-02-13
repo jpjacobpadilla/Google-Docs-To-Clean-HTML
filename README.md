@@ -93,7 +93,7 @@ Add an element above another. This method will add an lxml.html.HtmlElement one 
 
 ### **give_images_unique_names(self) -> None:**
 
-Uses the heading tags to create a more descriptive image name. It also adds a random number to the image names
+Uses the heading tags to create a more descrpitive image name. It also adds a random number to the image names
 to ensure that a client's browser doesn't use a cached image on an page update.
 
 ### **pretty_save(self, file_path: str = '.') -> None:**
@@ -140,6 +140,7 @@ cleaner.generate_header_id_attributes()
 cleaner.insert_inline_code()
 cleaner.insert_highlightjs_code_blocks()
 cleaner.remove_empty_tags()
+cleaner.give_images_unique_names()
 cleaner.alter_image_attributes(path_template='articles/example/{original}')
 cleaner.add_element_above_tag_type(type='img', add='<br>')
 
