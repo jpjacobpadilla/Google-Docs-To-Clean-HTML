@@ -15,6 +15,7 @@ from gdtch.mixins.alter_text import AlterText
 from gdtch.mixins.multiline_transform import MultiLineTransformations
 from gdtch.mixins.add_elements import AddElements
 from gdtch.mixins.add_attributes import AddAttributes
+from gdtch.mixins.alter_attributes import AlterAttributes
 
 if TYPE_CHECKING:
     from lxml.html import HtmlElement
@@ -28,10 +29,12 @@ class Cleaner(
     CleanText,
     MultiLineTransformations,
     AddElements,
-    AddAttributes
+    AddAttributes,
+    AlterAttributes
 ):
 
     def __init__(self, file_path: str):
+        self.html_file_path = file_path
         self.elements = self.get_elements(file_path)
         
     @staticmethod
