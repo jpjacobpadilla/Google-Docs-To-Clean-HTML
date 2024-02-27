@@ -58,7 +58,7 @@ Remove the pesky `span` html elements that Google Docs puts everywhere.
 
 ### **clean_text(self) -> None:**
 
-Escape the text in the tags containing text. If elements such as an `a` tag are inside of a `p` tag, the text inside of the `a` tag will still be encoded! This method also makes the quotes curly and removes extra white space between the text and end of the `p` tag.
+Remove extra space around the text. If elements such as an `a` tag are inside of a `p` tag, the text inside of the `a` tag will still be encoded! This method also makes the quotes curly and removes extra white space between the text and end of the `p` tag.
 
 ### **generate_header_id_attributes(self) -> None:**
 
@@ -71,6 +71,10 @@ Replace two ticks with `code` elements. See the image above for more info.
 ### **insert_highlightjs_code_blocks(self) -> None:**
 
 I use [Highlight.js](https://highlightjs.org/) to add colors to the multiline code blocks on my website. This method will transform a code block into a single element (takes up one slot in the self.elements Python list). Abiding by the highlight.js documentation, this method wraps the code block in `pre` and `code` elements and adds the following classes to the `code` element: `language-[YOUR LANGUAGE] hljs`.
+
+### ***make_code_block_quotes_straight(self) -> None:**
+
+Turns the curly quotes inside of the code blocks into straight ones so that HighlightJS works.
 
 ### **remove_empty_tags(self) -> None:**
 

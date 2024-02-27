@@ -16,6 +16,7 @@ cleaner.generate_header_id_attributes()
 cleaner.insert_inline_code()
 cleaner.insert_highlightjs_code_blocks()
 cleaner.remove_empty_tags()
+cleaner.make_code_block_quotes_straight()
 
 # Super messy template for flask's Jinja server side rendering engine
 cleaner.give_images_unique_names()  # For cache busting

@@ -1,5 +1,5 @@
 import re
-from lxml import html, etree
+from lxml import html
 
 
 class AlterText:
