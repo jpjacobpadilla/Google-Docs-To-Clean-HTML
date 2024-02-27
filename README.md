@@ -56,9 +56,9 @@ Add a target attribute to all of the outgoing links. For example, if I want to o
 
 Remove the pesky `span` html elements that Google Docs puts everywhere.
 
-### **clean_p_text(self) -> None:**
+### **clean_text(self) -> None:**
 
-Encode the text in the `p` tags. If elements such as an `a` tag are inside of a `p` tag, the text inside of the `a` tag will still be encoded! This method also makes the quotes curley and removes extra white space between the text and end of the `p` tag.
+Encode the text in the tags containing text. If elements such as an `a` tag are inside of a `p` tag, the text inside of the `a` tag will still be encoded! This method also makes the quotes curly and removes extra white space between the text and end of the `p` tag.
 
 ### **generate_header_id_attributes(self) -> None:**
 
@@ -88,11 +88,11 @@ Example: `articles/{original}` will output `articles/images/image[number].jpg
 
 ### **add_element_above_tag_type(self, \*, type: str, add: str) -> None:**
 
-Add an element above another. This method will add an lxml.html.HtmlElement one slot above another element in the self.elements list. I use this to add a `br` tag above my `img` tags because I never added margin-top to the images on my website :)
+Add an element above another. This method will add an Lxml.html.HtmlElement one slot above another element in the self.elements list. I use this to add a `br` tag above my `img` tags because I never added margin-top to the images on my website :)
 
 ### **give_images_unique_names(self) -> None:**
 
-Uses the heading tags to create a more descrpitive image name. It also adds a random number to the image names
+Uses the heading tags to create a more descriptive image name. It also adds a random number to the image names
 to ensure that a client's browser doesn't use a cached image on an page update.
 
 ### **pretty_save(self, file_path: str = '.') -> None:**
@@ -100,7 +100,7 @@ to ensure that a client's browser doesn't use a cached image on an page update.
 write all of the lines in self.elements to a new html file. This will print the elements with indentation so that, in my opinion, it's easier to read.
 
 ## Example
-A basic configration would be something such as:
+A basic configuration would be something such as:
 
 ```python
 from gdtch import Cleaner
@@ -112,7 +112,7 @@ cleaner = Cleaner(HTML_FILE)
 
 cleaner.clean_element_attributes()
 cleaner.remove_span_tags()
-cleaner.clean_p_text()
+cleaner.clean_text()
 cleaner.remove_empty_tags()
 
 cleaner.pretty_save(file_path='.')
@@ -134,7 +134,7 @@ cleaner.clean_element_attributes()
 cleaner.add_class_to_element(element='a', class_attr='blue-link')
 cleaner.add_target_to_outgoing_links(origin="jacobpadilla.com", target='_blank')
 cleaner.remove_span_tags()
-cleaner.clean_p_text()
+cleaner.clean_text()
 cleaner.generate_header_id_attributes()
 cleaner.insert_inline_code()
 cleaner.insert_highlightjs_code_blocks()

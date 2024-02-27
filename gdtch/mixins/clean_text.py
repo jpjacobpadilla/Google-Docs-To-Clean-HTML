@@ -3,7 +3,7 @@ from lxml import html
 
 
 class CleanText:
-    def clean_p_text(self) -> None:
+    def clean_text(self) -> None:
         i = 0
 
         while i < len(self.elements):
