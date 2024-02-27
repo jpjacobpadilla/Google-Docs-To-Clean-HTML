@@ -23,12 +23,27 @@ class MultiLineTransformations:
 
                 pre_element = html.Element("pre")
                 code_element = html.Element("code")
+
                 code_element.text = code.removesuffix('\n')
                 code_element.attrib['class'] = f'language-{lang} hljs'
                 pre_element.append(code_element)
                 self.elements.insert(i, pre_element)
 
             i += 1
+
+    def make_code_block_quotes_straight(self) -> None:
+        for element in self.elements:
+            if element.tag == 'pre':
+                code_element = element.find('./code')
+                code = code_element.text 
+
+                # Change all curly quotes to straight quotes for code
+                code = code.replace('“', '"')
+                code = code.replace('”', '"')
+                code = code.replace('‘', "'")
+                code = code.replace('’', "'")
+
+                code_element.text = code
 
     def alter_image_attributes(self, path_template: str = '{}') -> None:
         i = 0
