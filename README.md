@@ -4,7 +4,7 @@
 
 <h1 align="center">Google Docs To Clean HTML</h1>
 
-This program allows you to take the messy auto-generated HTML that Google Docs gives you when downloading a file in HTML format and turn it into clean and usable HTML. This is mainly built for my [tech blog](https://jacobpadilla.com), but I decided to make it public as others may find it helpful. That being said, the program cannot clean all HTML elements yet (such as tables and videos) - More about what this program can clean below. 
+This program allows you to take the messy auto-generated HTML that Google Docs gives you when downloading a file in HTML format and turn it into clean and usable HTML. This is mainly built for my [tech blog](https://jacobpadilla.com), but I decided to make it public as others may find it helpful. That being said, the program cannot clean all HTML elements yet (such as tables and videos) - More about what this program can clean below.
 
 In an effort to make this program modular and expandable, I refactored the tiny script into a package (gdtch) that uses a mixin design pattern so that (in theory) it's easy to add more features! If you find this project useful, consider contributing to it!
 
@@ -28,7 +28,7 @@ Currently, this project supports the following type of Google Document styling. 
 
 <img src="graphics/supported.png" width="700px">
 
-To use the program, you can pick from the following methods to choose which parts of the HTML to clean. As more features are added, you can clean more! 
+To use the program, you can pick from the following methods to choose which parts of the HTML to clean. As more features are added, you can clean more!
 
 ### **remove_top_of_document(self, element_break: str = 'hr') -> None:**
 
@@ -36,7 +36,7 @@ Remove the top part of the document. I like to make an outline on the top part o
 
 ### **clean_element_attributes(self) -> None:**
 
-Get rid of the Google Docs generated attributes. This method actually calls three more methods: 
+Get rid of the Google Docs generated attributes. This method actually calls three more methods:
 
 * self.remove_junk_attrs(exclude={'a', 'img'})
 * self.clean_a_tag_attrs()
@@ -72,7 +72,7 @@ Replace two ticks with `code` elements. See the image above for more info.
 
 I use [Highlight.js](https://highlightjs.org/) to add colors to the multiline code blocks on my website. This method will transform a code block into a single element (takes up one slot in the self.elements Python list). Abiding by the highlight.js documentation, this method wraps the code block in `pre` and `code` elements and adds the following classes to the `code` element: `language-[YOUR LANGUAGE] hljs`.
 
-### ***make_code_block_quotes_straight(self) -> None:**
+### **make_code_block_quotes_straight(self) -> None:**
 
 Turns the curly quotes inside of the code blocks into straight ones so that HighlightJS works.
 
@@ -86,7 +86,7 @@ If you have images in your Google document, when you download the HTML, they wil
 
 Pass in a template and let this method update all of the `img` tag sources.
 
-The template is a Python string. The original source is stored in a variable, that you can use in the template, called `original`. 
+The template is a Python string. The original source is stored in a variable, that you can use in the template, called `original`.
 
 Example: `articles/{original}` will output `articles/images/image[number].jpg
 
