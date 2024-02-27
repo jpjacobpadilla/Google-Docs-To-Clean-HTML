@@ -58,7 +58,7 @@ Remove the pesky `span` html elements that Google Docs puts everywhere.
 
 ### **clean_text(self) -> None:**
 
-Encode the text in the tags containing text. If elements such as an `a` tag are inside of a `p` tag, the text inside of the `a` tag will still be encoded! This method also makes the quotes curly and removes extra white space between the text and end of the `p` tag.
+Escape the text in the tags containing text. If elements such as an `a` tag are inside of a `p` tag, the text inside of the `a` tag will still be encoded! This method also makes the quotes curly and removes extra white space between the text and end of the `p` tag.
 
 ### **generate_header_id_attributes(self) -> None:**
 

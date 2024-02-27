@@ -1,4 +1,5 @@
 import re
+import html as phtml
 from lxml import html
 
 
@@ -32,5 +33,6 @@ class CleanText:
         parts = re.split(r'(<[^>]+>)', html_string)  # Split by HTML tags
         for i, part in enumerate(parts):
             if not re.match(r'<[^>]+>', part):  # If it's not a tag
-                parts[i] = CleanText.convert_quotes(part)  # Convert quotes in text
+                part = CleanText.convert_quotes(part)  # Convert quotes in text
+                parts[i] = phtml.escape(part)
         return ''.join(parts)
