@@ -83,7 +83,7 @@ class Cleaner(
                         formatted_item = f"\n{' ' * 4 * indent}{formatted_line}\n\n"
                     
                     case _:
-                        formatted_item = f"{' ' * 4 * indent}{self._get_line(item)}\n"
+                        formatted_item = f"{' ' * 4 * indent}{self._get_line(item).replace('\u00A0', ' ')}\n"
 
                 file.write(formatted_item)
     
