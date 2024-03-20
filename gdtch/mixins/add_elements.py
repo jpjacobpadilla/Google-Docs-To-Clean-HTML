@@ -10,21 +10,27 @@ class AddElements:
             for span in tag.xpath('.//span'):
                 if self._get_styles(list(span.classes)).get('font-weight', 0) >= 700 and span.text:
                     strong_tag = html.Element('strong')
-                    strong_tag.text = span.text.replace('&nbsp;', ' ')
+                    strong_tag.text = span.text
 
                     parent  = span.getparent()
                     parent.replace(span, strong_tag)
 
-    def _get_styles(self, classes) -> dict:
+    def _get_styles(self, classes: list) -> dict:
         properties = {}
         for rule in self.styles:
-            if rule.type == rule.STYLE_RULE:
-                for selector in rule.selectorText.split(','):
-                    if self.selector_matches_element(selector.strip(), classes):
-                        for property in rule.style:
-                            # This overwrites properties if multiple rules apply
-                            properties[property.name] = int(property.value) if \
-                                property.value.isnumeric() else property.value
+            if rule.type != rule.STYLE_RULE:
+                continue
+
+            for selector in rule.selectorText.split(','):
+                selector = selector.strip()
+                if not self.selector_matches_element(selector, classes):
+                    continue
+
+                for css_property in rule.style:
+                    # Convert numeric values to integers, otherwise keep the original value
+                    value = css_property.value
+                    properties[css_property.name] = int(value) if value.isnumeric() else value
+
         return properties
 
     def selector_matches_element(self, selector, classes):
