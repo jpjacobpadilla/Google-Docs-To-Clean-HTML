@@ -90,6 +90,10 @@ The template is a Python string. The original source is stored in a variable, th
 
 Example: `articles/{original}` will output `articles/images/image[number].jpg
 
+### **def add_strong_tags(self) -> None:**
+
+Allows for bold text. Google Docs uses CSS to make certain fonts bold. This method will look for the specific styles and replace the span tag (which has the bold styling) with a `strong` tag. This method must called before `cleaner.clean_element_attributes()` as it will remove all of the attributes that are used for the CSS.
+
 ### **add_element_above_tag_type(self, \*, type: str, add: str) -> None:**
 
 Add an element above another. This method will add an Lxml.html.HtmlElement one slot above another element in the self.elements list. I use this to add a `br` tag above my `img` tags because I never added margin-top to the images on my website :)
@@ -129,11 +133,11 @@ from gdtch import Cleaner
 
 
 HTML_FILE = ''
-URL_NAME = ''
 
 cleaner = Cleaner(HTML_FILE)
 
 cleaner.remove_top_of_document(element_break='hr')
+cleaner.add_strong_tags()
 cleaner.clean_element_attributes()
 cleaner.add_class_to_element(element='a', class_attr='blue-link')
 cleaner.add_target_to_outgoing_links(origin="jacobpadilla.com", target='_blank')
