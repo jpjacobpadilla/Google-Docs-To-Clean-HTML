@@ -90,7 +90,7 @@ The template is a Python string. The original source is stored in a variable, th
 
 Example: `articles/{original}` will output `articles/images/image[number].jpg
 
-### **def add_strong_tags(self) -> None:**
+### **add_strong_tags(self) -> None:**
 
 Allows for bold text. Google Docs uses CSS to make certain fonts bold. This method will look for the specific styles and replace the span tag (which has the bold styling) with a `strong` tag. This method must called before `cleaner.clean_element_attributes()` as it will remove all of the attributes that are used for the CSS.
 
