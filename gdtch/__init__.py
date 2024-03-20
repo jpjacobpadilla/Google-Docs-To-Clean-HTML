@@ -4,6 +4,7 @@ from typing import TYPE_CHECKING
 from pathlib import Path
 
 from lxml import html
+import cssutils
 
 from gdtch.exceptions import WrongFilePathToHTML
 
@@ -19,6 +20,7 @@ from gdtch.mixins.alter_attributes import AlterAttributes
 
 if TYPE_CHECKING:
     from lxml.html import HtmlElement
+    from cssutils.css import CSSStyleRule
 
 
 class Cleaner(
@@ -35,16 +37,19 @@ class Cleaner(
 
     def __init__(self, file_path: str):
         self.html_file_path = file_path
-        self.elements = self.get_elements(file_path)
+        self.elements, self.styles = self.get_elements(file_path)
         
     @staticmethod
-    def get_elements(file_path: str) -> list[HtmlElement]:
+    def get_elements(file_path: str) -> tuple[list[HtmlElement], list[CSSStyleRule]]:
         if not Path(file_path).exists() or Path(file_path).suffix != '.html':
             raise WrongFilePathToHTML()
 
         with open(file_path, mode='r', encoding='utf-8') as file:
             root = html.parse(file).getroot()
-        return list(root.body.iterchildren())
+
+        style = root.find('./head/style').text
+
+        return list(root.body.iterchildren()), list(cssutils.CSSParser().parseString(style))
 
     def pretty_save(self, file_path: str = '.') -> None:
         indent = 0
