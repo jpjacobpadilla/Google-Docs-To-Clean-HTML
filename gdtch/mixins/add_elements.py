@@ -23,7 +23,7 @@ class AddElements:
 
             for selector in rule.selectorText.split(','):
                 selector = selector.strip()
-                if not self.selector_matches_element(selector, classes):
+                if not self._selector_matches_element(selector, classes):
                     continue
 
                 for css_property in rule.style:
@@ -33,7 +33,7 @@ class AddElements:
 
         return properties
 
-    def selector_matches_element(self, selector, classes):
+    def _selector_matches_element(self, selector, classes):
         return selector.startswith('.') and selector[1:] in classes
 
     def add_element_above_tag_type(self, *, type: str, add: str) -> None:
