@@ -30,5 +30,9 @@ class AlterAttributes:
         for i in range(element_index, -1, -1):
             element = self.elements[i]
             if element.tag.startswith('h') and element.tag[-1].isnumeric():
-                return '-'.join(element.text.lower().split())
+                element_text = element.text
+                break
+        
+        element_text = ''.join([t for t in element_text.lower() if t.isalpha() or t.isspace()])
+        return '-'.join(element_text.split())
 
