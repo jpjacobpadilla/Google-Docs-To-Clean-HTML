@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 from pathlib import Path
+import logging
 
 from lxml import html
 import cssutils
@@ -38,7 +39,7 @@ class Cleaner(
     def __init__(self, file_path: str):
         self.html_file_path = file_path
         self.elements, self.styles = self.get_elements(file_path)
-        
+
     @staticmethod
     def get_elements(file_path: str) -> tuple[list[HtmlElement], list[CSSStyleRule]]:
         if not Path(file_path).exists() or Path(file_path).suffix != '.html':
@@ -49,6 +50,7 @@ class Cleaner(
 
         style = root.find('./head/style').text
 
+        cssutils.log.setLevel(logging.CRITICAL)
         return list(root.body.iterchildren()), list(cssutils.CSSParser().parseString(style))
 
     def pretty_save(self, file_path: str = '.') -> None:
@@ -76,18 +78,18 @@ class Cleaner(
                         lines = line.splitlines()
                         for i in range(1, len(lines) - 1):
                             lines[i] = ' ' * 4 * indent + ' '  *  4 + lines[i]
-                        
+
                         lines[-1] = ' ' * 4 * indent +  lines[-1]
 
                         formatted_line = '\n'.join(lines)
                         formatted_item = f"\n{' ' * 4 * indent}{formatted_line}\n\n"
-                    
+
                     case _:
                         formatted_item = f"{' ' * 4 * indent}{self._get_line(item).replace('\u00A0', ' ')}\n"
 
                 file.write(formatted_item)
-    
+
     @staticmethod
     def _get_line(element: HtmlElement, **kwargs) -> str:
         return html.tostring(element, method='html', encoding='utf-8', **kwargs).decode('utf-8')
-                    
+
