@@ -16,7 +16,11 @@ class MultiLineTransformations:
 
                 code = ''
                 while self.elements[i].text is None or not re.match(r'```$', self.elements[i].text):
-                    code += f'{"" if not (text := self.elements[i].text) else text}\n'
+                    element_str = html.tostring(self.elements[i], encoding='utf-8').decode('utf-8')
+                    modified_str = element_str.replace('<br>', '\n').replace('<br/>', '\n')
+                    new_element = html.fromstring(modified_str)
+                    code += f'{"" if not (text := new_element.text) else text}\n'
+
                     self.elements.pop(i)
 
                 self.elements.pop(i)
