@@ -103,7 +103,7 @@ Add an element above another. This method will add an Lxml.html.HtmlElement one 
 Uses the heading tags to create a more descriptive image name. It also adds a random number to the image names
 to ensure that a client's browser doesn't use a cached image on an page update.
 
-### **pretty_save(self, file_path: str | None) -> None:**
+### **pretty_save(self, file_path: str | None) -> str | None:**
 
 Write all of the lines in self.elements to a new html file if `file_path` is set OR if it's not set, return the content as a string. This will format the elements with indentation so that, in my opinion, it's easier to read.
 
@@ -123,7 +123,7 @@ cleaner.remove_span_tags()
 cleaner.clean_text()
 cleaner.remove_empty_tags()
 
-cleaner.pretty_save(file_path='./clean_html.html)
+cleaner.pretty_save(file_path='./clean_html.html')
 ```
 
 This is the configuration that I use for the articles on my website:
