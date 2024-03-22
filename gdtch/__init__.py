@@ -56,7 +56,7 @@ class Cleaner(
         cssutils.log.setLevel(logging.CRITICAL)
         return list(root.body.iterchildren()), list(cssutils.CSSParser().parseString(style))
 
-    def pretty_save(self, file_path: str | None) -> str | None:
+    def pretty_save(self, file_path: str | None = None) -> str | None:
         buffer = self._pretty_save()
         buffer.seek(0)
 
