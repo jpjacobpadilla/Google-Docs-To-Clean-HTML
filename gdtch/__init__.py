@@ -3,6 +3,7 @@ from __future__ import annotations
 from typing import TYPE_CHECKING
 from pathlib import Path
 import logging
+import io
 
 from lxml import html
 import cssutils
@@ -55,41 +56,56 @@ class Cleaner(
         cssutils.log.setLevel(logging.CRITICAL)
         return list(root.body.iterchildren()), list(cssutils.CSSParser().parseString(style))
 
-    def pretty_save(self, file_path: str = '.') -> None:
+    def pretty_save(self, file_path: str | None) -> str | None:
+        buffer = self._pretty_save()
+        buffer.seek(0)
+
+        if file_path:
+            with open(file_path, mode='w', encoding='utf-8') as file:
+                file.write(buffer.read())
+                buffer.close()
+        else:
+            content = buffer.getvalue()
+            buffer.close()
+            return content
+
+    def _pretty_save(self) -> io.StringIO:
         indent = 0
+        file = io.StringIO()
 
-        with open(f'{file_path}/cleaned_html.html', mode='w', encoding='utf-8') as file:
-            for item in self.elements:
-                match item.tag:
-                    case _ if item.tag.startswith('h') and item.tag[-1].isnumeric():
-                        indent = int(item.tag[-1])
-                        formatted_item = f"\n{' ' * 4 * (indent - 1)}{self._get_line(item)}\n\n"
+        for item in self.elements:
+            match item.tag:
+                case _ if item.tag.startswith('h') and item.tag[-1].isnumeric():
+                    indent = int(item.tag[-1])
+                    formatted_item = f"\n{' ' * 4 * (indent - 1)}{self._get_line(item)}\n\n"
 
-                    case 'pre':
-                        formatted_item = f"\n{' ' * 4 * indent}{self._get_line(item)}\n\n"
+                case 'pre':
+                    formatted_item = f"\n{' ' * 4 * indent}{self._get_line(item)}\n\n"
 
-                    case 'br':
-                        formatted_item = f"\n{' ' * 4 * indent}{self._get_line(item)}\n"
+                case 'br':
+                    formatted_item = f"\n{' ' * 4 * indent}{self._get_line(item)}\n"
 
-                    case 'img':
-                        formatted_item = f"{' ' * 4 * indent}{self._get_line(item)}\n\n"
+                case 'img':
+                    formatted_item = f"{' ' * 4 * indent}{self._get_line(item)}\n\n"
 
-                    case 'ul' | 'ol':
-                        line = self._get_line(item, pretty_print=True)
+                case 'ul' | 'ol':
+                    line = self._get_line(item, pretty_print=True)
 
-                        lines = line.splitlines()
-                        for i in range(1, len(lines) - 1):
-                            lines[i] = ' ' * 4 * indent + ' '  *  4 + lines[i]
+                    lines = line.splitlines()
+                    for i in range(1, len(lines) - 1):
+                        lines[i] = ' ' * 4 * indent + ' '  *  4 + lines[i]
 
-                        lines[-1] = ' ' * 4 * indent +  lines[-1]
+                    lines[-1] = ' ' * 4 * indent +  lines[-1]
 
-                        formatted_line = '\n'.join(lines)
-                        formatted_item = f"\n{' ' * 4 * indent}{formatted_line}\n\n"
+                    formatted_line = '\n'.join(lines)
+                    formatted_item = f"\n{' ' * 4 * indent}{formatted_line}\n\n"
 
-                    case _:
-                        formatted_item = f"{' ' * 4 * indent}{self._get_line(item).replace('\u00A0', ' ')}\n"
+                case _:
+                    formatted_item = f"{' ' * 4 * indent}{self._get_line(item).replace('\u00A0', ' ')}\n"
 
-                file.write(formatted_item)
+            file.write(formatted_item)
+
+        return file
 
     @staticmethod
     def _get_line(element: HtmlElement, **kwargs) -> str:
