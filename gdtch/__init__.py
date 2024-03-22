@@ -36,9 +36,11 @@ class Cleaner(
     AlterAttributes
 ):
 
-    def __init__(self, file_path: str):
+    def __init__(self, file_path: str, *args, **kwargs):
         self.html_file_path = file_path
         self.elements, self.styles = self.get_elements(file_path)
+
+        super().__init__(*args, **kwargs)
 
     @staticmethod
     def get_elements(file_path: str) -> tuple[list[HtmlElement], list[CSSStyleRule]]:
