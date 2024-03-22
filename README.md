@@ -103,9 +103,9 @@ Add an element above another. This method will add an Lxml.html.HtmlElement one 
 Uses the heading tags to create a more descriptive image name. It also adds a random number to the image names
 to ensure that a client's browser doesn't use a cached image on an page update.
 
-### **pretty_save(self, file_path: str = '.') -> None:**
+### **pretty_save(self, file_path: str | None) -> None:**
 
-write all of the lines in self.elements to a new html file. This will print the elements with indentation so that, in my opinion, it's easier to read.
+Write all of the lines in self.elements to a new html file if `file_path` is set OR if it's not set, return the content as a string. This will format the elements with indentation so that, in my opinion, it's easier to read.
 
 ## Example
 A basic configuration would be something such as:
@@ -123,7 +123,7 @@ cleaner.remove_span_tags()
 cleaner.clean_text()
 cleaner.remove_empty_tags()
 
-cleaner.pretty_save(file_path='.')
+cleaner.pretty_save(file_path='./clean_html.html)
 ```
 
 This is the configuration that I use for the articles on my website:
@@ -151,7 +151,7 @@ cleaner.give_images_unique_names()
 cleaner.alter_image_attributes(path_template='articles/example/{original}')
 cleaner.add_element_above_tag_type(type='img', add='<br>')
 
-cleaner.pretty_save(file_path='.')
+cleaner.pretty_save(file_path='./clean_html.html')
 ```
 
 ## Setup
