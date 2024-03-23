@@ -1,8 +1,7 @@
 from gdtch import Cleaner
 
 
-HTML_FILE = ''
-URL_NAME = 'test'
+HTML_FILE = '/path/to/html.html'
 
 cleaner = Cleaner(HTML_FILE)
 
@@ -18,11 +17,12 @@ cleaner.insert_inline_code()
 cleaner.insert_highlightjs_code_blocks()
 cleaner.remove_empty_tags()
 cleaner.make_code_block_quotes_straight()
-
-# Super messy template for flask's Jinja server-side rendering engine
-cleaner.give_images_unique_names()  # For cache busting
-cleaner.alter_image_attributes(path_template=f"{{{{{{{{url_for('articles.static',filename='{URL_NAME}/static/{{original}}')}}}}}}}}")
-
+cleaner.give_images_unique_names() 
+cleaner.alter_image_attributes(path_template='articles/example/{original}')
 cleaner.add_element_above_tag_type(type='img', add='<br>')
 
-cleaner.pretty_save(file_path='.')
+cleaner.pretty_save(file_path='/clean_html.html')
+
+# Or you can get back the result as a string by not specifying a file path:
+content = cleaner.pretty_save()
+print(content)
