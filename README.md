@@ -60,9 +60,9 @@ Remove the pesky `span` html elements that Google Docs puts everywhere.
 
 Remove extra space around the text. If elements such as an `a` tag are inside of a `p` tag, the text inside of the `a` tag will still be encoded! This method also makes the quotes curly and removes extra white space between the text and end of the `p` tag.
 
-### **generate_header_id_attributes(self) -> None:**
+### **generate_header_id_attributes(self, add_incrementing_number: bool = False) -> None:**
 
-I generally have a table of contents on my articles, and to make those, you need to set the table of contents links to a fragment of the article. This is what I use this method for - It will take the text inside the h tags, replace the spaces with a dash, make all of the text lowercase, and then set that value to the `id` of the h tag.
+I generally have a table of contents on my articles, and to make those, you need to set the table of contents links to a fragment of the article. This is what I use this method for - It will take the text inside the `h` tags, replace the spaces with a dash, make all of the text lowercase, and then set that value to the `id` of the `h` tag. If two or more of the headers are the same, you can set `add_incrementing_number` to `True`.
 
 ### **insert_inline_code(self) -> None:**
 

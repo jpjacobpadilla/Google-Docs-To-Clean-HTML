@@ -12,12 +12,15 @@ class AddAttributes:
                 if urlparse(a.attrib['href']).hostname != origin:
                     a.attrib['target'] = target
 
-    def generate_header_id_attributes(self) -> None:
+    def generate_header_id_attributes(self, add_incrementing_number: bool = False) -> None:
         for element in self.elements:
             if re.match(r'h[1-6]$', element.tag):
                 element_text = ''.join([t for t in element.text.lower() if t.isalnum() or t.isspace()])
                 element_text_list = element_text.split()
-                element_text_list.append(str(self.header_num))
+
+                if add_incrementing_number:
+                    element_text_list.append(str(self.header_num))
+
                 element.attrib['id'] = '-'.join(element_text_list)
 
                 self.header_num += 1
