@@ -32,7 +32,9 @@ class AlterAttributes:
             if element.tag.startswith('h') and element.tag[-1].isnumeric():
                 element_text = element.text
                 break
-        
-        element_text = ''.join([t for t in element_text.lower() if t.isalpha() or t.isspace()])
-        return '-'.join(element_text.split())
+        else:
+            element_text = 'img'
+
+        formatted_element_text = ''.join([t for t in element_text.lower() if t.isalpha() or t.isspace()])
+        return '-'.join(formatted_element_text.split())
 
