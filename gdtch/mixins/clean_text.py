@@ -1,5 +1,4 @@
 import re
-import html as phtml
 from lxml import html
 
 
