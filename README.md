@@ -174,6 +174,4 @@ Make a Python file, like the example ones in the `example` directory, and then r
 
 ## Contributions
 
-Contributions are welcome! If you have a suggestion or an issue, please use the issue tracker to let us know.
-
-You can also contact me [here](https://jacobpadilla.com/contact).
+Contributions are welcome! If you have a suggestion or an issue, please use the issue tracker to let me know.
