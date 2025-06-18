@@ -60,9 +60,13 @@ class MultiLineTransformations:
                 pairs = self.make_pairs(meta_data)
                 for key, val in itertools.batched(pairs, 2):
                     formatted_key = key.strip('"”” ')
-                    formatted_val = val.strip('"”” ')
-                    self.elements[i].attrib[formatted_key] = formatted_val
-                
+
+                    if val:
+                        formatted_val = val.strip('"”” ')
+                        self.elements[i].attrib[formatted_key] = formatted_val
+                    else:
+                        self.elements[i].attrib[formatted_key] = val
+
                 original_src = self.elements[i].attrib['src']
                 self.elements[i].attrib['src'] = path_template.format(original=original_src)
 
@@ -70,6 +74,16 @@ class MultiLineTransformations:
                 i -= 1
 
             i += 1
+
+    def handle_light_dark_mode_images(self):
+        i = 0
+
+        while i < len(self.elements):
+            if self.elements[i].tag == 'img' and 'dark-mode' in self.elements[i].attrib:
+                self.elements.pop(i - 1)
+
+            else:
+                i += 1
 
     @staticmethod
     def make_pairs(meta_data: str) -> list[str]:
@@ -90,5 +104,8 @@ class MultiLineTransformations:
                     inserted = False
 
                 part += letter
+
+        if part and part.strip() in ('light-mode', 'dark-mode'):
+            pairs.extend([part.strip(), None])
 
         return pairs
