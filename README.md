@@ -171,7 +171,3 @@ $ pip install -e Google-Docs-To-Clean-HTML/
 ```
 
 Make a Python file, like the example ones in the `example` directory, and then run it!
-
-## Contributions
-
-Contributions are welcome! If you have a suggestion or an issue, please use the issue tracker to let me know.
