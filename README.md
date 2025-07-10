@@ -4,7 +4,7 @@
 
 <h1 align="center">Google Docs To Clean HTML</h1>
 
-This program allows you to take the messy auto-generated HTML that Google Docs gives you when downloading a file in HTML format and turn it into clean and usable HTML. This is mainly built for my [tech blog](https://jacobpadilla.com), but I decided to make it public as others may find it helpful. That being said, the program cannot clean all HTML elements yet (such as tables and videos) - More about what this program can clean below.
+This program allows you to take the messy auto-generated HTML that Google Docs gives you when downloading a file in HTML format and turn it into clean and usable HTML. This is mainly built for my [tech blog](https://jacobpadilla.com), but I decided to make it public as others may find it helpful. That being said, the program cannot clean all HTML elements yet (such as tables and videos). More about what this program can clean below.
 
 In an effort to make this program modular and expandable, I refactored the tiny script into a package (gdtch) that uses a mixin design pattern so that (in theory) it's easy to add more features! If you find this project useful, consider contributing to it!
 
@@ -54,7 +54,7 @@ Add a target attribute to all of the outgoing links. For example, if I want to o
 
 ### **remove_span_tags(self) -> None:**
 
-Remove the pesky `span` html elements that Google Docs puts everywhere.
+Remove the pesky `span` HTML elements that Google Docs puts everywhere.
 
 ### **clean_text(self) -> None:**
 
